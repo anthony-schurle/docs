@@ -343,7 +343,7 @@ Since $(a_1, a_2, a_3) \ne (0, 0, 0)$, it follows that $(b_1, b_2, b_3) \ne (0, 
   - Multiply each column of the matrix by the corresponding coordinate of the vector.
 - **Row By Column Rule**
   - If $Ax = y$, then $y_k = \sum^n_{j = 1}a_{k, j}x_j, k = 1, 2, ..., m$.
-  - 
+
 ### Examples
 **Example Title**
 **Problem 3.1:**
