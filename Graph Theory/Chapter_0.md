@@ -14,6 +14,7 @@
   - Pair of sets $G = (V, E)$ such that $E \subseteq [V]^2$.
   - Assume $V \cap E = \emptyset$.
   - Vertices are elements of V and the vertex set is notated by $V(G)$.
+  - A graph is said to be on V.
   - Edges are elements of E written typically as $\{x, y\}$ or $xy$ and the edge set is notated by $E(G)$.
   - All edges at vertex v denoted by $E(v)$.
   - $E(X, Y) = \{xy \in E(G) : x \in X, y \in Y\}$.
@@ -26,7 +27,8 @@
 - **Trivial Graph**
   - Order 0 or 1.
 - **Incident**
-  - Vertex v is incident with an edge e if $v \in e$.
+  - Vertex v is incident with an edge e if $v \in e$ and edge e is at v.
+  - Set of all the edges E at a vertex v is denoted by $E(v)$.
   - Both vertices incident with an edge are its ends and the edge joins these vertices.
 - **Neighbors**
   - For $x, y \in G$, x and y are neighbors if $\{x, y\} \in E(G)$.

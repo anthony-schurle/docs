@@ -96,12 +96,5 @@ Let $\Gamma, \Gamma', \Gamma''$ be the topologies of $\mathbb{R}, \mathbb{R}_l, 
 Define $\beta$ as the collection of all finite intersections of elements of S.
 Given $x \in X$, it belongs to an element of S and hence to an element of $\beta$. This is the first condition of a basis. Let $B_1 = S_1 \cap ... \cap S_m$ and $B_2 = S_1' \cap ... \cap S_n'$ be two elements of $\beta$. Their intersection is also a finite intersection of elements of S, so it belongs to $\beta$. Thus, S is a basis and so generates a topology.
 
-### Examples
-**Example Title**
-**Problem:**
-Problem Statement.
-**Solution:**
-Solution Statement.
-
 ### References
-- *Book Title* — Chapter X, Pages Y–Z
+- *Topology* — Chapter X, Pages Y–Z

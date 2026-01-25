@@ -494,3 +494,185 @@ Let x be arbitrary vector in $\mathbb{C}$. It follows that, $T(x) = T(x \times 1
 
 ### References
 - *Book Title* — Chapter X, Pages 12–17
+
+
+## 0.3 Linear Transformations As A Vector Space
+---
+### Key Concepts
+- **Linear Transformation Vector Space**:
+  - $L(V, W)$ is a vector space of linear transformations mapping V to W.
+  - Addition defined as: $(T_1 + T_2)v = T_1v + T_2v$.
+  - Scalar Multiplication: $(\alpha T)v = \alpha (Tv)$.
+  - Satisfies Vector Space properties.
+
+### References
+- *Book Title* — Chapter 1, Pages Y–19
+
+
+## 0.4 Composition Of Linear Transformations And Matrix Multiplication
+---
+### Key Concepts
+- **Matrix Multiplication Properties**:
+  - Associativity.
+  - Distributivity.
+  - Scalar multiple commutativity, not for matrices though.
+### Definitions
+- **Column By Vector Rule**
+  - Multiply each column of the matrix by the corresponding vector of the other matrix.
+- **Row By Column Rule**
+  - $(AB)_{j, k} = \sum_l a_{j, l}b_{l, k}$.
+  - Defined iff A is $m \times n$ and B is $n \times r$.
+- **Linear Transformation Composition**
+  - $T_1 : \mathbb{F}^n \to \mathbb{F}^m, T_2 : \mathbb{F}^r \to \mathbb{F}^n$. Define $T = T_1 \circ T_2$ as $\forall x \in \mathbb{F}^r T(x) = T_1(T_2(x))$.
+- **Transpose**
+  - $(A^T)_{j, k} = (A)_{k, j}$.
+  - $(AB)^T = B^TA^T$.
+- **Trace**
+  - $\text{trace}(A) = \sum_{k =1}^n a_{k,k}$.
+
+### Theorems & Proofs
+**Theorem 5.1**
+Let A and B be matrices of size $m \times n$ and $n \times m$. Then $\text{trace}(AB) = \text{trace}(BA)$.
+
+### Examples
+**Example Title**
+**Problem 5.3:**
+Multiply two rotation matrices $T_\alpha$ and $T_\beta$ (it is a rare case when the multiplication is commutative, so the order is not essential). Deduce formulas for $sin(\alpha + \beta)$ and $cos(\alpha + \beta)$ from here.
+**Solution:**
+$$
+T_{\alpha + \beta} := T_\alpha \circ T_\beta
+$$
+But $T_{\alpha + \beta}$ is just the transformation that rotates by $\alpha + \beta$. Therefore,
+$$
+[T_{\alpha + \beta}] = \begin{pmatrix} cos(\alpha + \beta) & -sin(\alpha + \beta) \\ sin(\alpha + \beta) & -cos(\alpha + \beta) \end{pmatrix} = [T_\alpha] [T_\beta] = \begin{pmatrix} cos(\alpha) & -sin(\alpha) \\ sin(\alpha) & -cos(\alpha) \end{pmatrix} \begin{pmatrix} cos(\beta) & -sin(\beta) \\ sin(\beta) & -cos(\beta) \end{pmatrix}
+$$
+$$
+= \begin{pmatrix} cos(\alpha)cos(\beta) -sin(\alpha)sin(\beta) & -cos(\alpha)sin(\beta) + cos(\beta)sin(\alpha) \\ sin(\alpha)cos(\beta) - cos(\alpha)sin(\beta) & -sin(\alpha)sin(\beta) + cos(\alpha)cos(\beta) \end{pmatrix}
+$$
+and so we see that $sin(\alpha + \beta) = sin(\alpha)cos(\beta) - cos(\alpha)sin(\beta)$ and $cos(\alpha + \beta) = cos(\alpha)cos(\beta) -sin(\alpha)sin(\beta)$. **Q.E.D**
+
+**Problem 5.4:**
+Find the matrix of the orthogonal projection in $\mathbb{R}^2$ onto the line $x_1 = -2x_2$. Hint: What is the matrix of the projection onto the coordinate axis $x_1$?
+**Solution:**
+$$ T_a := \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, T_l := \begin{pmatrix} 1 & 0 \\ 2 & 0 \end{pmatrix} $$ Notice $T_a$ is the projection onto the $x_1$ axis and $T_l$ is the orthogonal projection from the $x_1$ axis to the line $x_1 = -2x_2$. Therefore, the matrix of the orthogonal projection in $\mathbb{R}^2$ onto the line $x_1 = -2x_2$ must be $T_l T_a$ which is,
+
+**Problem 5.6:**
+Prove Theorem 5.1, i.e. prove that $trace(AB) = trace(BA)$.
+**Solution:**
+Notice $(AB)_{k, k} = \sum_l a_{k, l} b_{l, k}$ and $(BA)_{k, k} = \sum_l b_{k, l} a_{l, k}$.
+
+**Problem 5.7:**
+Construct a non-zero matrix A such that $A^2 = 0$.
+**Solution:**
+$$
+A := \begin{pmatrix} 1 & -1 \\ 1 & -1 \end{pmatrix}
+$$
+$$
+A^2 = \begin{pmatrix} 1 & -1 \\ 1 & -1 \end{pmatrix}\begin{pmatrix} 1 & -1 \\ 1 & -1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = 0
+$$
+**Q.E.D**
+
+### References
+- *Book Title* — Chapter X, Pages Y–Z
+
+
+## 0.5 Invertible Transformations And Matrices. Isomorphisms
+---
+### Definitions
+- **Identity Transformation**
+  - $Ix = x, \forall x$.
+  - Not unique.
+  - $AI = A$ and $IA = A$ for any linear transformation A.
+- **Left Invertible**
+  - $A: V \to W$ is left invertible if $\exists B: W \to V (BA = I)$.
+  - Matrix is left invertible if the transformation is.
+- **Right Invertible**
+  - $A: V \to W$ is left invertible if $\exists B: W \to V (AB = I)$.
+  - Matrix is right invertible if the transformation is.
+- **Invertible\Isomorphism**
+  - Left and right invertible.
+  - The domain and codomain are called isomorphic.
+  - Matrix is invertible if the transformation is.
+  - Must be a square matrix.
+  - If A is invertible, then its inverse is invertible and is A.
+
+### Theorems & Proofs
+**Theorem 6.1**
+If a linear transformation $A: V \to W$ is invertible, then its left and right inverses B and C are unique and coincide.
+
+Let $BA = I$ and $AC = I$. Then $BAC = B(AC) = BI = B$. On the other hand, $BAC = (BA)C = IC = C$. Therefore, $B = C$. Suppose for some transformation $B_1$ we have $B_1A = I$. Repeating the reasoning above with $B_1$ instead of $B$ we get $B_1 = C$. Therefore, the left inverse B is unique. The uniqueness of C is proved similarly. **Q.E.D**
+
+**Corollary**
+A transformation $A: V \to W$ is invertible iff $\exists ! A^{-1}: W \to V (A^{-1}A = I_V \land AA^{-1} = I_W)$. $A^{-1}$ is called the inverse of A.
+
+**Theorem 6.3**
+If linear transformations A and B are invertible, then the product $AB$ is invertible if defined and $(AB)^{-1} = B^{-1}A^{-1}$.
+
+$$
+(AB)(B^{-1}A^{-1}) = I, (B^{-1}A^{-1})(AB) = I
+$$
+**Q.E.D**
+
+**Theorem 6.5**
+If a matrix A is invertible, then $A^T$ is also invertible and $(A^T)^{-1} = (A^{-1})^T$.
+
+$$
+(A^{-1})^TA^T = (AA^{-1})^T = I^T = I
+$$
+$$
+A^T(A^{-1})^T = (A^{-1}A)^T = I^T = I
+$$
+**Q.E.D**
+
+**Theorem 6.6**
+Let $A : V \to W$ be an isomorphism, then let $v_1, v_2, ..., v_n$ be a basis in V. Then the system $Av_1, Av_2, ..., Av_n$ is a basis in W.
+
+**Theorem 6.7**
+Let $A : V \to W$ a linear map, and let $v_1, v_2, ..., v_n$ and $w_1, w_2, ..., w_n$ be bases in V and W. If $Av_k = w_k, k = 1, 2, ..., n$, then A is an isomorphism.
+
+Define $A^{-1}$ by $A^{-1}w_k = v_k, k = 1, 2, ..., n$.
+
+**Theorem 6.8**
+Let $A : V \to W$ a linear transformation. and Then A is invertible iff for any right side $b \in Y$, the equation $Ax = b$ has a unique solution $x \in X$.
+
+Suppose A is invertible. Then $x = A^{-1}b$ solves the equation $Ax = b$. Suppose for some other vector $v_1 \in X$, $Ax_1 = b$. Multiplying by $A^{-1}$ from the left gives $A^{-1}Ax_1 = A^{-1}b$. Therefore, $x_1 = x$. Now suppose the equation $Ax = b$ has unique solution $x$ for any $b \in Y$. Call the solution $B(b)$ and define a transformation $B : Y \to X$. It is easy to show that B is a linear transformation if we define $x_k := B(y_k)$. Take $x \in X$ and let $y = Ax$, so by definition of B we have $x = By$. Then for all $x \in X$, $BAx = By = x$. So $BA = I$. For arbitrary $y \in Y$, let $x = By$, so $y = Ax$. Then for all y, $ABy = Ax = y$ and so $AB = I$.
+**Q.E.D**
+
+**Corollary 6.9**
+An $m \times n$ matrix is invertible iff its columns form a basis in $\mathbb{F}^m$.
+
+### Examples
+**Example Title**
+**Problem 6.2:**
+Find all right inverses to the $1 \times 2$ matrix (row) $A = (1, 1)$. Conclude from here that the row A is not left invertible.
+**Solution:**
+All right inverses are defined as $\begin{pmatrix} a \\ b \end{pmatrix}$ where $a + b = 1$ because $A\begin{pmatrix} a \\ b \end{pmatrix} = (a + b) = (1)$. We can see there are infinitely many such solutions. But then by theorem 6.1, because the right inverse is not unique, we see that A is not invertible. We know A is right invertible so it must not be left invertible. **Q.E.D**
+
+**Problem 6.5:**
+Find two matrices A and B that AB is invertible, but A and B are not. Hint:
+square matrices A and B would not work. Remark: It is easy to construct such
+A and B in the case when AB is a $1 \times 1$ matrix (a scalar). But can you get $2 \times 2$
+matrix AB? $3 \times 3$? $n \times n$?
+**Solution:**
+Using Corollary 6.9, we want to specify A and B such that they do not form a basis but AB does.
+
+
+**Problem 6.7:**
+Let A and AB be invertible (assuming that the product AB is well defined). Prove that B is invertible.
+**Solution:**
+$$
+AB(AB)^{-1} = I \implies A^{-1}AB(AB)^{-1} = A^{-1} \implies B(AB)^{-1} = A^{-1} \implies B(AB)^{-1}A = I
+$$
+and so B is right invertible.
+$$
+AB = AB \implies (AB)^{-1}AB = (AB)^{-1}AB \implies (AB)^{-1}AB = I
+$$
+and so B is left invertible. Therefore, B is invertible. **Q.E.D**
+
+**Problem 6.8:**
+Let A be $n \times n$ matrix. Prove that if $A^2 = 0$ then A is not invertible.
+**Solution:**
+Suppose $A^2 = 0$. Suppose A were invertible. Then there is $n \times n$ matrix B such that $AB = I$ and $BA = I$ by theorem 6.1. However, multiply the left sides both by A gives $AAB = AI$ which is equivalent to $0 = A$. But then $AB = 0$ always which is a contradiction, therefore A is not invertible. **Q.E.D**
+
+### References
+- *Book Title* — Chapter X, Pages Y–Z
