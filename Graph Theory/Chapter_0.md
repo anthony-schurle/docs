@@ -295,6 +295,9 @@ Such graphs $G'$ exist since G is one; let H be one of smaller order. No graph $
 - **Tree Height**
   - Distance k from the root of a tree have height k.
   - Vertices at height k form the kth level of a tree.
+- **Normal Tree**
+  - Rooted tree contained in a graph G where the ends of every T-path in G are comparable in the tree-order of T.
+  - If T spans G, this requires that two vertices of T must be comparable when they are adjacent in G.
 
 ### Theorems & Proofs
 **Theorem 1.5.1**
@@ -313,6 +316,10 @@ A connected graph with n vertices is a tree iff it has $n - 1$ edges.
 If T is a tree and G is any graph with $\delta(G) \ge |T| - 1$, then T is isomorphic to a subgraph of G.
 
 Map the vertices of T to G inductively, following their enumeration from Proposition 1.4.1 applied to T. $\blacksquare$
+
+**Lemma 1.5.4**
+Let T be a normal tree in G.
+(i) Any two vertices 
 
  ### Formulas
 **Formula Name**

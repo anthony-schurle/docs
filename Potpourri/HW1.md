@@ -14,49 +14,46 @@ Take arbitrary $x := \{x_1, x_2, ..., x_n\}, y := \{y_1, y_2, ..., y_n\} \in V(H
 Case 1: $n \ge 2$. Take $x := \{0, 0, ..., 0\} \in V(H_n)$. There is a neighbor $y := \{0, 1, 0, ..., 0\}$ of x. Also, there is a neighbor $z := \{1, 1, 0, 0, ..., 0\}$ of y. Continuing, there is a $f := \{1, 0, 0, ..., 0\}$ of z. Notice f is a neighbor of x. So we have a cycle $xyzfx$ and its length is 4. Suppose we had a shorter cycle with length 3. Then it can be defined by the vertices vnmv. Then there is some k such that $v_k \ne n_k$. Continuing, there is some $l \ne k$ - else we return to v - such that $n_l \ne m_l$. It follows that there is some $p \ne l$ - else we return to m - such that $m_p \ne v_p$ and m is a neighbor of v. But this is a contradiction because m differs from v by at least two digits and so can not be neighbors. Thus, $g(H_n) = 4$.
 
 (Circumference)
+We show the circumference is $2^n$ by induction. For $n = 1$, there's only two vertices so there's no cycle. For $n = 2$, we get a square with 4 vertices so the circumference is $4 = 2^2$. Now suppose the circumference of $H_n$ is $2^n$. By the construction from before, $H_{n+1}$ has two copies of $H_n$ - call them $H_n^0$ (with 0 appended) and $H_n^1$ (with 1 appended). Each copy has a longest cycle of length $2^n$ by the inductive hypothesis. Take the longest cycle $C = v_1v_2...v_{2^n}v_1$ in $H_n^0$. Pick two neighbors in this cycle, say $v_i$ and $v_{i+1}$. They differ in exactly one of the first $n$ positions by definition. Their partners $v_i'$ and $v_{i+1}'$ in $H_n^1$ also differ in that same position, so they're neighbors too. Also $v_i$ and $v_i'$ are neighbors because they only differ in the last bit. Same for $v_{i+1}$ and $v_{i+1}'$. So we can make a bigger cycle by going $v_1$ through $v_i$ in $H_n^0$, then jump to $v_i'$, go to $v_{i+1}'$ in $H_n^1$, jump back to $v_{i+1}$, and finish through $v_{2^n}$ back to $v_1$. This gets all $2^n$ vertices from $H_n^0$ and all $2^n$ from $H_n^1$, so the cycle has length $2^{n+1}$. Since there are only $2^{n+1}$ vertices total in $H_{n+1}$, this is the longest possible cycle. Therefore the circumference of $H_{n+1}$ is $2^{n+1}$.
 
-2)Let G be a graph. If $\delta(G) = d \ge 2$ and $g(G) = g \in \mathbb{N}$, prove that
-$$
-|G| \ge \begin{cases} 1 + d\sum_{i = 0}^{r - 1}(d - 1)^i & \text{if } 2r + 1 := g,\\ 2\sum_{i = 0}^{r - 1}(d - 1)^i  & \text{if } 2r := g. \end{cases}
-$$
+2)Let G be a graph. If $\delta(G) = d \ge 2$ and $g(G) = g \in \mathbb{N}$, prove that $$ |G| \ge \begin{cases} 1 + d\sum_{i = 0}^{r - 1}(d - 1)^i & \text{if } 2r + 1 := g,\ 2\sum_{i = 0}^{r - 1}(d - 1)^i & \text{if } 2r := g. \end{cases} $$
 
-Suppose $\delta(G) = d \ge 2$ and $g(G) = g \in \mathbb{N}$. Suppose $2r = g$ for $r \in \mathbb{N}$, meaning g is even. 
+Case 1: $g = 2r + 1$ (odd girth). Pick arbitrary $v \in V(G)$. Define $N_i$ to be the vertices at distance exactly $i$ from $v$. Clearly $|N_0| = 1$ (just v) and $|N_1| \ge d$ because $d(v) \ge d$ by definition. For $i \ge 2$, take any $u \in N_{i-1}$. Since $d(u) \ge d$, vertex u has at least $d$ neighbors. One of those neighbors is in $N_{i-2}$ (from the path back to $v$). The other at least $d-1$ neighbors can't be in $N_{i-1}$ or earlier because that would make a cycle shorter than $2r+1$, which contradicts the girth. So they must all be in $N_i$. This means $|N_i| \ge |N_{i-1}|(d-1)$. Therefore $|N_i| \ge d(d-1)^{i-1}$ for $i \ge 1$. It follows that $$|G| \ge \sum_{i=0}^{r} |N_i| \ge 1 + \sum_{i=1}^{r} d(d-1)^{i-1} = 1 + d\sum_{i=0}^{r-1}(d-1)^i$$
+
+Case 2: $g = 2r$ (even girth). Pick arbitrary edge $e = uv \in E(G)$. Define $N_i^u$ to be vertices at distance exactly $i$ from $u$, and $N_i^v$ to be vertices at distance exactly $i$ from $v$. Since the girth is $2r$, the sets $N_i^u$ and $N_j^v$ can't share vertices when $i + j < 2r - 1$ because that would make a cycle shorter than $2r$. So for $i < r$, the sets $N_i^u$ and $N_i^v$ are disjoint. We have $|N_0^u| = 1$ and $|N_0^v| = 1$. Also $|N_1^u| \ge d-1$ because $u$ has degree at least $d$ and one edge goes to $v$. Same reasoning gives $|N_1^v| \ge d-1$. For $i \ge 2$, similar to Case 1, we get $|N_i^u| \ge (d-1)^i$ and $|N_i^v| \ge (d-1)^i$. Therefore $$|G| \ge \sum_{i=0}^{r-1}|N_i^u| + \sum_{i=0}^{r-1}|N_i^v| = 2\sum_{i=0}^{r-1}(d-1)^i$$
 
 3)Determine $\kappa(G)$ and $\lambda(G)$ for $G = P_n, C_n, K_n, K_{m, n}$, and $H_n$ where $n, m \ge 3$.
 
 ($P_n$)
 Let $P_n$ be represented by $x_1x_2...x_n$.
-Define arbitrary set $X \subseteq V(P_n) \land |X| = 0$. Clearly, $P_n - X$ is connected because $P_n$ is connected. So $P_n$ is 1-connected. Define $X := \{x_2\}$. $P_n - X$ isolates $x_1$ which now no longer has any neighbors. This means, no path exists between $x_1$ and $x_3$ and so $P_n - X$ is disconnected. Therefore, $P_n$ is not 2-connected. Thus, $\kappa(P_n) = 1$.
+By Proposition 1.4.2, we see that $\kappa(P_n) \le \lambda(P_n) \le 1$. But $P_n$ is assumed to non-trivial and it is connected by definition, so $\kappa(P_n) \ge 1$. It follows that $\kappa(P_n) = \lambda(P_n) = 1$.
 
+($C_n$) 
+Let $C_n$ be represented by $x_1x_2...x_nx_1$.
+By Proposition 1.4.2, we see that $\kappa(C_n) \le \lambda(C_n) \le 2$.  Consider arbitrary $v \in V(C_n)$ where we have $G := C_n - \{v\}$. Represent this G as $y_1y_2...y_{n-1}$. Clearly, this a path which is connected by definition. Therefore, $\kappa(C_n) \ge 2$ It follows that $\kappa(C_n) = \lambda(C_n) = 2$.
 
+($K_n$)
+By Proposition 1.4.2, we see that $\kappa(K_n) \le \lambda(K_n) \le n-1$. Suppose $\kappa(K_n) = n - 2$. Then we pick $k_1, k_2, ..., k_{n-2} \in V(K_n)$ such that $K_n - \{k_1, k_2, ..., k_{n-2}\}$ is disconnected. Notice that leaves $v_1, v_2 \in (K_n - \{k_1, k_2, ..., k_{n-2}\})$ which are adjacent by definition of the complete graph, and so connected. This is a contradiction and so it must be that $\kappa(K_n) \ge n - 1$. Thus, $\kappa(K_n) = \lambda(K_n) = n - 1$.
 
+($K_{m, n}$)
+WLOG, assume $m \le n$. Pick arbitrary $v \in K_{m,n}$. By definition, $|N(v)| = n$ or $|N(v)| = m$. It follows that $\delta(K_{m, n})$ is $min(m, n) = m$ since each vertex has either m or n neighbors. By Proposition 1.4.2, we see that $\kappa(K_{m,n}) \le \lambda(K_{m,n}) \le m$. Suppose $\kappa(K_{m,n}) = m - 1$. Then we pick $k_1, k_2, ..., k_{m-1} \in V(K_{m,n})$ such that $V(K_{m,n}) - \{k_1, k_2, ..., k_{m-1}\}$ is disconnected. But since $|\{k_1, k_2, ..., k_{m-1}\}| < m \le n$, this is just a graph $K_{x, y}$ where $x + y = n + 1 \ge 4$ and $x \ge 1$ and $y \ge 1$. Pick arbitrary $v_1, v_2 \in K_{x,y}$. If $v_1$ lies in partition x and $v_2$ in y, then by definition they are connected. Similar reasoning follows for if $v_1$ lies in partition y and $v_2$ in x. If $v_1,v_2$ both lie in partition x, then there is a vertex in partition y they both share - by definition of the graph and because $y \ge 1$ - and so both are connected. Similar reasoning follows for when both are in partition y. Therefore, this graph is connected which is a contradiction. It follows that $\kappa(K_{m,n}) \ge m$. Thus, $\kappa(K_{m,n}) = \lambda(K_{m,n}) = m$.
 
-- **K-Connected**
-  - If $|G| > k$ and $G - X$ is connected for every set $X \subseteq V$ with $|X| < k$.
-  - Every (non-empty) graph is 0-connected.
-  - Non-trivial connected graphs are 1-connected.
-- **Connectivity**
-  - Greatest integer k such that G is k-connected denoted $\kappa(G)$.
-  - $\kappa(K^n) = n - 1$ for all $n \ge 1$.
-- **l-edge-connected**
-  - If $|G| > 1$ and $G - F$ is connected for every set $F \subseteq E$ with $|F| < l$.
-- **Edge-Connectivity**
-  - Greatest integer l such that G is l-edge-connected denoted $\lambda(G)$.
-  - If G is disconnected $\lambda(G) = 0$.
-
-
-
-
-
+($H_n$)
+($H_n$)
+By Proposition 1.4.2 and problem 1, we see that $\kappa(H_n) \le \lambda(H_n) \le n$. Suppose $\kappa(H_n) = n - 1$. Then we pick $h_1, h_2, ..., h_{n-1} \in V(H_n)$ such that $G := H_n - \{h_1, h_2, ..., h_{n-1}\}$ is disconnected. Now pick arbitrary $x, y \in V(G)$ from different components. Let x be defined as $(x_1, x_2, ..., x_n)$ and y as $(y_1, y_2, ..., y_n)$. We construct $n$ vertex-disjoint paths from $x$ to $y$ in $H_n$. For each $j \in \{1, 2, ..., n\}$, define path $P_j$ as follows: starting at $x$, flip bit $j$ to match $y_j$, then flip each subsequent bit $i > j$ where $x_i \ne y_i$ to match $y_i$, then flip each bit $i < j$ where $x_i \ne y_i$ to match $y_i$. Each path $P_j$ has length at most $n$ and the paths are vertex-disjoint except at their endpoints $x$ and $y$ because they each flip bit $j$ at different stages. Since there are $n$ such vertex-disjoint paths and we removed only $n - 1$ vertices from $H_n$, at least one path remains intact in $G$. Therefore $x$ and $y$ are connected in $G$, contradicting that they are in different components. Thus, $\kappa(H_n) \ge n$. It follows that $\kappa(H_n) = \lambda(H_n) = n$.
 
 4)
 a) Show that every 2-connected graph contains a cycle.
 
 Call the graph G. Take arbitrary $x, y \in V(G)$. 
 Case 1: x and y are not neighbors. Because G is 2-connected, there is some path $xPy$ linking x and y. Now pick $v \in xPy$ where $v \ne  x \land v \ne y$. Consider the graph $G - v$ which must have a path $xWy$ because G is 2-connected. Notice $xWy \ne xPy$ because $v \not \in V(G - v)$. We then found cycle $C := xPyWx$.
-Case 2: x and y are neighbors. Pick arbitrary $v \in V(G)$ where $v \ne \land v \ne y$. By connectivity there exists a path $xPv$ and $vWy$. But then we found cycle $C := xPvWyx$.
+Case 2: x and y are neighbors. Pick arbitrary $v \in V(G)$ where $v \ne x \land v \ne y$. By connectivity there exists a path $xPv$ and $vWy$. But then we found cycle $C := xPvWyx$.
 Thus, every 2-connected graph contains a cycle.
 
 b)Show the (i) $\iff$ (iv) implication of Theorem 1.5.1.
 
 ($\implies$) Suppose T is a tree which is acyclic by definition. Pick arbitrary non-adjacent $t_1, t_2 \in T$. There exists $t_1Pt_2$ by definition. But then $T + t_1t_2$ creates cycle $t_1Pt_2t_1$ and since $t_1,t_2$ were arbitrary, T is maximally acyclic. ($\Longleftarrow$) Suppose T is maximally acyclic. Now suppose T was not connected. Then there exists some $t_1, t_2 \in V(T)$ with infinite distance. Now consider $T + t_1t_2$, which is a graph with a subgraph containing the bridge $t_1t_2$. This subgraph does not contain a cycle because a bridge does not lie on a cycle and it was acyclic to begin with. But T was maximally acyclic and so this is a contradiction. Therefore, T is connected, and by definition a tree.
+
+5)Show that every automorphism of a tree fixes a vertex or an edge.
+
+Let T be a tree and φ be an automorphism of T. Pick a longest path P in T. Case 1: P has odd length $2r+1$. Let $P = v_0v_1...v_{2r+1}$. Consider the middle vertex $c = v_{r+1}$. Since φ is an automorphism, it preserves distances by definition. So φ maps longest paths to longest paths. The vertex c is distance $r+1$ from both endpoints $v_0$ and $v_{2r+1}$. Since any longest path has length $2r+1$, its middle vertex also has this property. Therefore φ must map c to some middle vertex of a longest path. But c is the only vertex on P with this distance property, so φ(c) = c. Thus c is fixed. Case 2: P has even length $2r$. Let $P = v_0v_1...v_{2r}$. Consider the middle edge $e = v_rv_{r+1}$. Since φ preserves distances and maps longest paths to longest paths, it must map middle edges to middle edges. The vertices $v_r$ and $v_{r+1}$ are both distance $r$ from $v_0$ and distance $r$ from $v_{2r}$. This means φ maps the edge ${v_r, v_{r+1}}$ to ${v_r, v_{r+1}}$ by the same reasoning. So the edge e is fixed. Therefore every automorphism of a tree fixes a vertex or an edge.
