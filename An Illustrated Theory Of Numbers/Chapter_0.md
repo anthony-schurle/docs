@@ -64,36 +64,5 @@ Let q be an integer closest to $\frac{a}{b}$. Thus, $q = \lfloor\frac{a}{b}\rflo
 **Two Out Of Three Principle**
 Let a, b, and c be integers such that $a + b = c$. Let d be an integer. If two of $\{a, b, c\}$ are multiples of d, then the third number is a multiple of d.
 
-### Formulas
-**Formula Name**
-Description.
-$$
-Equation
-$$
-### Visual Aids
-| Header | Header |
-| - | - |
-| Content | Content |
-![Diagram]()
-### Examples
-**Example Title**
-**Problem:**
-Problem Statement.
-**Solution:**
-Solution Statement.
-### Notable Quotes
-> “Notable quote."
-### Common Pitfalls
-- Pitfall 1.
-### Related Links
-- [Link]()
 ### References
-- *Book Title* — Chapter X, Pages Y–Z
-
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
-
-- [Related Chapter in This Wiki]()  
-
-- [Official Specification or Standard Document (PDF/URL)]()  
-
-- Class Lecture ([Link]())
+- *Book Title* — Chapter X, Pages Y–24
