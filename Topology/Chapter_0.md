@@ -158,7 +158,8 @@ Let $\Gamma$ denote the product topology on $X \times Y$, let $\Gamma'$ be the t
   - Subpoint or clarification.
 ### Definitions
 - **Subspace Topology**
-  - Concise explanation of the term.
+  - If $(X, \Gamma)$ and $Y \subseteq X$, then $\Gamma_Y = \{Y \cap U : U \in \Gamma\}$.
+  - Y is a subspace of X.
 ### Algorithms
 **Algorithm Name**
 Description.
@@ -174,8 +175,21 @@ Description.
 // code
 ```
 ### Theorems & Proofs
-**Theorem Name**
-Proof.
+**Lemma 16.1**
+If B is a basis for the topology on X the the collection $B_Y = \{b \cap Y : b \in B\}$ is a basis for the subspace topology on X.
+
+Given U open in X and given $y \in U \cap Y$, we can choose an element b of B such that $y \in b \subseteq U$. Then $y \in b \cap Y \subseteq U \cap Y$. It follows from Lemma 13.2 that $B_Y$ is a basis for the subspace topology on Y. $\blacksquare$
+
+**Lemma 16.2**
+Let Y be a subspace of X. If U is open in Y and Y is open in X, then U is open in X.
+
+Since U is open in Y, $U = Y \cap V$ for some V open in X. Since Y and V are both open in X, so is $Y \cap V$. $\blacksquare$
+
+**Theorem 16.3**
+If A is a subspace of X and B is a subspace of Y, then the product topology on $A \times B$ is the same as the topology $A \times B$ inherits as a subspace of $X \times Y$.
+
+
+
 ### Formulas
 **Formula Name**
 Description.
