@@ -7,9 +7,6 @@
 
 ## 1.0 The Euclidean Algorithm
 ---
-### Key Concepts
-- **Concept Name**:
-  - Subpoint or clarification.
 ### Definitions
 - **Greatest Common Divisor**
   - Natural number g is the gcd of a and b if:
@@ -73,38 +70,53 @@ Since $a | m$ and $a | n$, we find that $a | GCD(m, n)$. Similarly, since $b | m
 **Proposition 1.19**
 Let a and b be nonzero integers. Let l be the smallest positive integer which is a common multiple of a and b. The l divides every common multiple of a and b and so $l = LCM(a, b)$.
 
-Let m 
+Let m be a common multiple of a and b. Since l is a common multiple of a and b, we find that $GCD(l, m)$ is a common multiple of a and b. Since $GCD(l, m) | l$ and l is a positive integer, we find that $GCD(l, m) \le l$. But since l was the smallest positive common multiple of a and b, we find that $GCD(l ,m) = l$. Therefore, $l | m$. $\blacksquare$
 
-### Formulas
-**Formula Name**
-Description.
+**Proposition 1.20**
+Let a and b be integers. Then for every n, there is an integer solution $(u, v)$ of the equation $au + bv = 0$ given by $u = n\frac{LCM(a, b)}{a}, v = -n\frac{LCM(a,b)}{b}$. All solutions are obtained this way.
+
+If $au + bv = 0$, then $au = -bv$. The left side is evidently a multiple of a and the right side is evidently a multiple of b; since they are equal, they equal a common multiple of a and b. Every common multiple of a and b is a multiple of $LCM(a, b)$. Therefore, for some integer n, $nLCM(a, b) = au = -bv$. Dividing through by a or by -b yields the equations desired. $\blacksquare$
+
+**Theorem 1.21 (General Solution Of Linear Diophantine Equations)**
+Let a, b, and c be integers. Suppose that $a \ne 0$ or $b \ne 0$. If c is not a multiple of $GCD(a, b)$ then the equation $ax + by = c$ has no integer solutions. On the other hand, if c is a multiple of $GCD(a, b)$ then the equation $ax + by = c$ has infinitely many solutions. Given one solution $(x_0, y_0)$, all solutions have the form:
 $$
-Equation
+x = x_0 + n \frac{LCM(a, b)}{a}, y = y_0 - n\frac{LCM(a,b)}{b}
 $$
+
+Theorem 1.14 shows that the equation has a solution iff c is a multiple of $GCD(a, b)$. Suppose $(x_0, y_0)$ is one solution to the equation. Given integers $(x, y)$, we find that $ax + by = c$ iff $a(x - x_0) + b(y - y_0) = 0$. Therefore, $ax + by = c$ iff $u = (x - x_0)$ and $v = (y - y_0)$ are solutions to the homogeneous equation $au + bv = 0$. By proposition 1.20, we see that we get the equations desired through simple algebra. $\blacksquare$
+
+**Theorem 1.23 (GCD-LCM product formula)**
+Let a and b be positive integers. Then $GCD(a, b) \times LCM(a, b) = a \times b$.
+
+We will use the reference image 1.15 in the proof. Notice $b = mg$ and $a = ng$. Hence g is a common divisor of a and b. It follows that $g | GCD(a, b)$. Second, observe that $l = av$ and $l = bu$. Hence l is a common multiple of a and b. It follows that $LCM(a, b) | l$. We therefore find $ab = g \cdot LCM(a, b) | GCD(a, b) \cdot LCM(a, b) | GCD(a, b) \cdot l = ab$. It follows that by a squeeze that all intermediate terms are equal:
+$$
+ab = g \cdot LCM = GCD(a, b) \cdot LCM(a, b) | GCD(a, b) \cdot l = ab
+$$
+$\blacksquare$
+
+**Corollary 1.25**
+Suppose that $(x_0, y_0)$ is a solution to the linear Diophantine equation $ax + by = c$. Then the general solution to this equation is:
+$$
+x = x_0 + n\frac{b}{GCD(a, b)}, y = y_0 - n\frac{a}{GCD(a, b)}
+$$
+
+**Proposition 1.27**
+If g, a, and b are integers, and $g > 0$, then $GCD(ga, gb) = gGCD(a, b)$ and $LCM(ga, gb) = gLCM(a, b)$.
+
+When a or b is zero, one may check the result directly. Since $GCD(a, b) = GCD(|a|, |b|)$, we may assume a and b are positive in what follows. Consider the euclidean algorithm applied to a,b alongside ga, gb. $a = qb + r, ga = qgb + gr$. If r is the natural remainder after dividing a by b, then gr is the remainder after dividing ga by gb. If $0 \le r < b$ then $0 \le gr < gb$. Thus $GCD(ga, gb) = GCD(gb, gr)$. In this way, every step of the Euclidean algorithm for ga, gb is obtained by scaling a step of the euclidean algorithm for a, b. Scaling the last nonzero remainders, we find that $gGCD(a, b) = GCD(ga, gb)$. Foe the LCM, we apply Theorem 1.23 to find $LCM(ga, gb) = \frac{gagb}{GCD(ga, gb)} = \frac{g^2ab}{gGCD(a, b)} = gLCM(a, b)$. $\blacksquare$
+
+**Corollary 1.29**
+If a and b are integers, not both zero, and $g = GCD(a, b)$, then $GCD(\frac{a}{g}, \frac{b}{g}) = 1$.
+
+We have,
+$$
+gGCD(\frac{a}{g}, \frac{b}{g}) = GCD(g\frac{a}{g}, g\frac{b}{g}) = GCD(a, b) = g
+$$
+and so we get $GCD(\frac{a}{g}, \frac{b}{g}) = 1$. $\blacksquare$
+
 ### Visual Aids
-| Header | Header |
-| - | - |
-| Content | Content |
-![Diagram]()
-### Examples
-**Example Title**
-**Problem:**
-Problem Statement.
-**Solution:**
-Solution Statement.
-### Notable Quotes
-> “Notable quote."
-### Common Pitfalls
-- Pitfall 1.
-### Related Links
-- [Link]()
+
+![[Screenshot from 2026-02-01 14-46-13.png]]
+
 ### References
-- *Book Title* — Chapter X, Pages Y–Z
-
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
-
-- [Related Chapter in This Wiki]()  
-
-- [Official Specification or Standard Document (PDF/URL)]()  
-
-- Class Lecture ([Link]())
+- *Book Title* — Chapter X, Pages Y–43

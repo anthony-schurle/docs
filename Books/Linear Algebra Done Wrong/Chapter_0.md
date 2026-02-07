@@ -719,3 +719,54 @@ Suppose arbitrary $x \in X$. Then consider $x + v \in X$. It follows by definiti
 
 ### References
 - *Book Title* — Chapter X, Pages Y–31
+
+
+## 0.7 Application To Computer Graphics
+---
+### Key Concepts
+- **Graphics**:
+  - Monitor can be represented as a grid of discrete pixels.
+### Definitions
+- **Bitmap**
+  - Every pixel of an object is described.
+- **Vector Object**
+  - Only critical points of an object are described.
+
+### Visual Aids
+![[Screenshot from 2026-02-02 14-30-08.png]]
+
+### Examples
+**Example Title**
+**Problem 8.2:**
+Show that a rotation through $\gamma$ can be represented as a composition of two shear-and-scale transformations,
+$$
+T_1 = \begin{pmatrix} 1 & 0 \\ sin(\gamma) & cos(\gamma) \end{pmatrix}, T_2 = \begin{pmatrix} sec(\gamma) & -tan(\gamma) \\ 0 & 1 \end{pmatrix}
+$$
+In what order the transformations should be taken?
+**Solution:**
+$$
+T_2T_1 = \begin{pmatrix} sec(\gamma) & -tan(\gamma) \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ sin(\gamma) & cos(\gamma) \end{pmatrix} = \begin{pmatrix} sec(\gamma) - tan(\gamma)sin(\gamma) & -tan(\gamma)cos(\gamma) \\ sin(\gamma) & cos(\gamma) \end{pmatrix}
+$$
+$$
+= \begin{pmatrix} \frac{1 - sin^2(\gamma)}{cos(\gamma)} & -sin(\gamma) \\ sin(\gamma) & cos(\gamma) \end{pmatrix} = \begin{pmatrix} cos(\gamma) & -sin(\gamma) \\ sin(\gamma) & cos(\gamma) \end{pmatrix}
+$$
+But this is just the rotation through $\gamma$. Therefore, a rotation through $\gamma$ can be represented as a composition of two shear-and-scale transformations $T_2T_1$. $\blacksquare$
+
+**Problem 8.4:**
+Write $4 \times 4$ matrix performing perspective projection to $x-y$ plane with center $(d_1, d_2, d_3)^T$.
+**Solution:**
+This can be represented by the linear transformation to move the center and then applying the projection to the x-y plane before moving it back.
+$$
+T_f := \begin{pmatrix} 1 & 0 & 0 & -d_1 \\ 0 & 1 & 0 & -d_2 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}, T_b := \begin{pmatrix} 1 & 0 & 0 & d_1 \\ 0 & 1 & 0 & d_2 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}, T_p := \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & \frac{-1}{d_3} & 1 \end{pmatrix}
+$$
+which gives us the matrix,
+$$
+T_bT_pT_f = \begin{pmatrix} 1 & 0 & 0 & d_1 \\ 0 & 1 & 0 & d_2 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & \frac{-1}{d_3} & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 & -d_1 \\ 0 & 1 & 0 & -d_2 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}
+$$
+$$
+ = \begin{pmatrix} 1 & 0 & 0 & d_1 \\ 0 & 1 & 0 & d_2 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 & -d_1 \\ 0 & 1 & 0 & -d_2 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & \frac{-1}{d_3} & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 & \frac{-d_1}{d_3} & 0 \\ 0 & 1 & \frac{-d_2}{d_3} & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & \frac{-1}{d_3} & 1 \end{pmatrix}
+$$
+$\blacksquare$
+
+### References
+- *Book Title* — Chapter X, Pages Y–37
