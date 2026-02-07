@@ -151,29 +151,17 @@ Let $\Gamma$ denote the product topology on $X \times Y$, let $\Gamma'$ be the t
 - *Book Title* — Chapter X, Pages Y–88
 
 
-## The Subspace Topology
+## 0.4 The Subspace Topology
 ---
-### Key Concepts
-- **Concept Name**:
-  - Subpoint or clarification.
 ### Definitions
 - **Subspace Topology**
   - If $(X, \Gamma)$ and $Y \subseteq X$, then $\Gamma_Y = \{Y \cap U : U \in \Gamma\}$.
   - Y is a subspace of X.
-### Algorithms
-**Algorithm Name**
-Description.
-```pseudo
-1. Step 1
-2. Step 2
-3. Step 3
-```
-### Code Snippets
-**Snippet Name**
-Description.
-```program
-// code
-```
+- **Ordered Square**
+  - $I \times I$ in dictionary order topology denoted $I_o^2$.
+- **Convex**
+  - Subset Y of ordered set X where each pair of points $a < b$ of Y, $(a, b)$ of points of X lies in Y. Therefore, intervals and rays in X are convex in X.
+
 ### Theorems & Proofs
 **Lemma 16.1**
 If B is a basis for the topology on X the the collection $B_Y = \{b \cap Y : b \in B\}$ is a basis for the subspace topology on X.
@@ -188,7 +176,104 @@ Since U is open in Y, $U = Y \cap V$ for some V open in X. Since Y and V are bot
 **Theorem 16.3**
 If A is a subspace of X and B is a subspace of Y, then the product topology on $A \times B$ is the same as the topology $A \times B$ inherits as a subspace of $X \times Y$.
 
+The set $U \times V$ is the general basis element of $X \times Y$, where U is open in X and V is open in Y. Therefore, $(U \times V) \cap (A \times B)$ is the general basis element for the subspace topology on $A \times B$. Now $(U \times V) \cap (A \times B) = (U \cap A) \times (V \cap B)$. Since $U \cap A$ and $V \cap B$ are the general open sets for the subspace topologies on A and B, respectively, the set $(U \cap A) \times (V \cap B)$ is the general basis element for the product topology on $A \times B$. Hence, both topologies are the same because their bases are. $\blacksquare$
 
+**Theorem 16.4**
+Let X be an ordered set in the order topology; let Y be a subset of X that is convex in X. Then the order topology on Y is the same as the topology Y inherits as a subspace of X.
+
+Consider the ray $(a, \infty)$ in X. If $a \in Y$, then $(a, \infty) \cap Y = \{x : x \in Y \land x > a\}$; this is an open ray of the ordered set Y. If $a \not \in Y$, then a is either a lower bound on Y or an upper bound on Y, since Y is convex. In the former case, the set $(a, \infty) \cap Y$ equals all of Y; in the latter case, it is empty. A similar remark shows that the intersection of the ray $(-\infty , a)$ with Y is either an open ray of Y, Y itself, or empty. Since $(a, \infty) \cap Y$ and $(-\infty , a) \cap Y$ form a subbasis for the topology on Y, and since each is open in the order topology, the order topology contains the subspace topology. TO prove the reverse, note that any open ray of Y equals the intersection of an open ray of X with Y, so it is open in the subspace topology on Y. Since the open rays of Y are a subbasis for the order topology on Y, this topology is contained in the subspace topology. $\blacksquare$
+
+### Common Pitfalls
+- Order topology on some Y need not be the same as the topology that Y inherits as a subspace of X unlike the product topology. Subspace topology is default.
+
+### References
+- *Book Title* — Chapter X, Pages Y–92
+
+
+## 0.5 Closed Sets And Limit Points
+---
+### Key Concepts
+- **Concept Name**:
+  - Subpoint or clarification.
+### Definitions
+- **Closed Set**
+  - Subset A of a topological space X where $X - A$ is open.
+- **Interior**
+  - Union of all open sets contained in A where A is a subset of a topological space.
+  - Denoted Int A.
+  - If A is open $A =$ Int A.
+- **Closure**
+  - The intersection of all closed sets containing A where A is a subset of a topological space.
+  - Denoted Cl A or $\overline A$.
+  - Int A $\subseteq$ A $\subseteq$ $\overline A$.
+  - If A is closed $A = \overline A$.
+- **Intersects**
+  - A intersects B if $A \cap B \ne \emptyset$.
+- **Neighborhood**
+  - U is a neighborhood of x if U is an open set containing x.
+- **Limit Point**
+  - If A is a subset of the topological space X and if x is a point of X where every neighborhood of x intersects A in some other point.
+  - x belongs to the closure of $A - \{x\}$.
+- **Converges**
+  - Sequence of points converges to point x if there is a positive integer N where $x_n \in U$ for all $n \ge N$ in each neighborhood U of x.
+- **Hausdorff Space**
+  - Topological space X where each pair $x_1, x_2$ of distinct points of X, there is a neighborhood $U_1$ and $U_2$ of $x_1$ and $x_2$ respectively that are disjoint.
+
+### Theorems & Proofs
+**Theorem 17.1**
+Let X be a topological space. Then the following conditions hold:
+1) $\emptyset$ and X are closed.
+2) Arbitrary intersections of closed sets are closed.
+3) Finite unions of closed sets are closed.
+
+$\emptyset$ and X are closed because they are complements of each other.
+Given a collection of closed sets $\{A_{\alpha}\}_{\alpha \in J}$, we apply DeMorgan's Law, $X - \bigcap_{\alpha \in J} A_{\alpha} = \bigcup_{\alpha \in J}(X - A_{\alpha})$. Since the sets $X - A_{\alpha}$ are open by definition, the right side of this equation represents and arbitrary union of open sets, and thus is open. Therefore, $\bigcap A_{\alpha}$ is closed.
+Similarly, if $A_i$ is closed for $i = 1, ..., n$, consider the equation $X - \bigcup_{i = 1}^n A_i = \bigcap_{i = 1}^n (X - A_i)$. The set on the right side of this equation is a finite intersection of open sets and is therefore open. Hence $\bigcup A_i$ is closed. $\blacksquare$
+
+**Theorem 17.2**
+Let Y be a subspace of X. Then a set A is closed in Y iff it equals the intersection of a closed set of X with Y.
+
+Assume that $A = C \cap Y$, where C is closed in X. Then $X - C$ is open in X, so that $(X - C) \cap Y$ is open in Y, by definition of the subspace topology. But $(X - C) \cap Y = Y - A$. Hence $Y - A$ is open in Y, so that $A$ is closed in Y. Conversely, assume that A is closed in Y. Then $Y - A$ is open in Y, so that by definition it equals the intersection of an open set U of X with Y. The set $X - U$ is closed in X, and $A = Y \cap (X - U)$, so that A equals the intersection of a closed set of X with Y, as desired. $\blacksquare$
+
+**Theorem 17.3**
+Let Y be a subspace of X. If A is closed in Y and Y is closed in X, then A is closed in X.
+
+**Theorem 17.4**
+Let Y be a subspace of X, let A be a subset of Y, let $\overline A$ denote the closure of A in X. Then the closure of A in Y equals $\overline A \cap Y$.
+
+Let B denote the closure of A in Y. The set $\overline A$ is closed in X, so $\overline A \cap Y$ is closed in Y by Theorem 17.2. Since $\overline A \cap Y$ contains A, and since by definition B equals the intersection of all closed subsets of Y containing A, we must have $B \subseteq (\overline A \cap Y)$. On the other hand, we know that B is closed in Y. Hence by Theorem 17.2, $B = C \cap Y$ for some set C closed in X. Then C is a closed set of X containing A; because $\overline A$ is the intersection of all such closed sets, we conclude that $\overline A \subseteq C$. Then $(\overline A \cap Y) \subseteq (C \cap Y) = B$. $\blacksquare$
+
+**Theorem 17.5**
+Let A be a subset of the topological space X.
+a) Then $x \in \overline A$ iff every open set U containing x intersects A.
+b) Supposing the topology of X is given by a basis, then $x \in \overline A$ iff every basis element B containing x intersects A.
+
+Consider the statement a. If $x \not \in \overline A$, the set $U = X - \overline A$ is an open set containing x that does not intersect A, as desired. Conversely, if there exists an open set U containing x which does not intersect A, then $X - U$ is a closed set containing A. By definition of the closure $\overline A$, the set $X - U$ must contain $\overline A$, therefore, x cannot be in $\overline A$.
+Consider statement b. If every open set containing x intersects A, so does every basis element B containing x, because B is an open set. Conversely, if every basis element containing x intersects A, so does every open set U containing x, because U contains a basis element that contains x. $\blacksquare$
+
+**Theorem 17.6**
+Let A be a subset of the topological space X, let A' be the set of all limit points of A. Then $\overline A = A \cup A'$.
+
+If x is in $A'$, every neighborhood of x intersects A. Therefore, by Theorem 17.5, x belongs to $\overline A$. Hence $A' \subseteq \overline A$. Since by definition $A \subseteq \overline A$, it follows that $A \cup A' \subseteq \overline A$. Let x be a point of $\overline A$. If x happens to lie in A, it is trivial that $x \in A \cup A'$; suppose that x does not line in A. Since $x \in \overline A$, we know that every neighborhood U of x intersects A; because $x \not \in A$, the set U must intersect A in a point different from x. Then $x \in A'$, so that $x \in A \cup A'$ as desired. $\blacksquare$
+
+**Corollary 17.7**
+A subset of a topological space is closed iff it contains all its limit points.
+
+The set A is closed iff $A = \overline A$, and the latter holds iff $A' \subseteq A$. $\blacksquare$
+
+**Theorem 17.8 ($T_1$ Axiom)**
+Every finite point set in a Hausdorff space X is closed.
+
+It suffices to show that every one point set $\{x_0\}$ is closed. If x is a point of X different from $x_0$, then x and $x_0$ have disjoint neighborhoods U and V respectively. Since U does not intersect $\{x_0\}$, the point x cannot belong to the closure of the set $\{x_0\}$. So, the closure of the set $\{x_0\}$ is $\{x_0\}$ itself, so that it is closed. $\blacksquare$
+
+**Theorem 17.9**
+Let X be a space satisfying $T_1$ Axiom; let A be a subset of X. Then the point x is a limit point of A iff every neighborhood of x contains infinitely many points of A.
+
+**Theorem 17.10**
+If X is a Hausdorff space, then a sequence of points of X converges to at most one point of X.
+
+**Theorem 17.11**
+Every simply ordered set is a Hausdorff space in the order topology. The product of two Hausdorff spaces is a Hausdorff space. A subspace of a Hausdorff space is a Hausdorff space.
 
 ### Formulas
 **Formula Name**
@@ -210,7 +295,10 @@ Solution Statement.
 ### Notable Quotes
 > “Notable quote."
 ### Common Pitfalls
-- Pitfall 1.
+- Sets can be both not open and not closed.
+- Sets can be open and closed.
+- Subspace topology assumed first.
+- $\overline A$ defaults to closure of A in the topological space and not the subspace.
 ### Related Links
 - [Link]()
 ### References
