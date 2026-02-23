@@ -192,9 +192,6 @@ Consider the ray $(a, \infty)$ in X. If $a \in Y$, then $(a, \infty) \cap Y = \{
 
 ## 0.5 Closed Sets And Limit Points
 ---
-### Key Concepts
-- **Concept Name**:
-  - Subpoint or clarification.
 ### Definitions
 - **Closed Set**
   - Subset A of a topological space X where $X - A$ is open.
@@ -216,6 +213,7 @@ Consider the ray $(a, \infty)$ in X. If $a \in Y$, then $(a, \infty) \cap Y = \{
   - x belongs to the closure of $A - \{x\}$.
 - **Converges**
   - Sequence of points converges to point x if there is a positive integer N where $x_n \in U$ for all $n \ge N$ in each neighborhood U of x.
+  - $x_n \to x$.
 - **Hausdorff Space**
   - Topological space X where each pair $x_1, x_2$ of distinct points of X, there is a neighborhood $U_1$ and $U_2$ of $x_1$ and $x_2$ respectively that are disjoint.
 
@@ -269,45 +267,66 @@ It suffices to show that every one point set $\{x_0\}$ is closed. If x is a poin
 **Theorem 17.9**
 Let X be a space satisfying $T_1$ Axiom; let A be a subset of X. Then the point x is a limit point of A iff every neighborhood of x contains infinitely many points of A.
 
+Use contradiction of a finite neighborhood to construct a neighborhood not containing points of A. $\blacksquare$
+
 **Theorem 17.10**
 If X is a Hausdorff space, then a sequence of points of X converges to at most one point of X.
 
 **Theorem 17.11**
 Every simply ordered set is a Hausdorff space in the order topology. The product of two Hausdorff spaces is a Hausdorff space. A subspace of a Hausdorff space is a Hausdorff space.
 
-### Formulas
-**Formula Name**
-Description.
-$$
-Equation
-$$
-### Visual Aids
-| Header | Header |
-| - | - |
-| Content | Content |
-![Diagram]()
-### Examples
-**Example Title**
-**Problem:**
-Problem Statement.
-**Solution:**
-Solution Statement.
-### Notable Quotes
-> “Notable quote."
 ### Common Pitfalls
 - Sets can be both not open and not closed.
 - Sets can be open and closed.
 - Subspace topology assumed first.
 - $\overline A$ defaults to closure of A in the topological space and not the subspace.
-### Related Links
-- [Link]()
+
 ### References
-- *Book Title* — Chapter X, Pages Y–Z
+- *Book Title* — Chapter X, Pages Y–102
 
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
 
-- [Related Chapter in This Wiki]()  
+## 0.6 Continuous Functions
+---
+### Definitions
+- **Continuous**
+  - Function $f: X \to Y$, where X and Y are topological spaces, such that for each open $V \subseteq Y$, the set $f^{-1}(V)$ is an open subset of X.
+  - $V = \bigcup_{\alpha \in J} B_\alpha$ so that $f^{-1}(V) = \bigcup_{\alpha \in J}f^{-1}(B_\alpha)$ meaning $f^{-1}(V)$ is open if $f^{-1}(B_\alpha)$ is open.
+  - $f^{-1}(B) = f^{-1}(S_1) \cap ... \cap f^{-1}(S_n)$ and so it suffices to show the inverse image of each subbasis element is open.
+  - Continuous at point x described by theorem 18.1,4.
+- **Homeomorphism**
+  - Let X and Y be topological spaces where $f: X \to Y$ is a bijection. Definition follows if f and $f^{-1}$ are continuous.
+  - In other words, $f(U)$ is open iff U is open.
+  - Analogous to an isomorphism.
+- **Topological Property**
+  - Property of topology X expressed entirely in terms of the topology.
+- **Topological Imbedding**
+  - $f: X \to Y$ is injective continuous map with $Z = f(X)$ as a subspace of Y. If $f' : X \to Z$ is homeomorphism then the definition follows of X in Y.
 
-- [Official Specification or Standard Document (PDF/URL)]()  
+### Theorems & Proofs
+**Theorem 18.1**
+Let X and Y be topological spaces; let $f: X \to Y$. Then the following are equivalent:
+1)f is continuous.
+2)For every $A \subseteq X$, one has $f(\overline{A}) \subseteq \overline{f(A)}$.
+3)For every closed set B of Y, $f^{-1}(B)$ is closed in X.
+4)$\forall x \in X$ and each neighborhood V of $f(x)$, $\exists$ neighborhood U of x such that $f(U) \subseteq V$.
 
-- Class Lecture ([Link]())
+**Theorem 18.2**
+Let X, Y, and Z be topological spaces.
+a) If $f : X \to Y$ maps all of X into the single point $y_0$ of Y, then f is continuous.
+b) If A is a subspace of X, the inclusion function $f : A \to X$ is continuous.
+c) If $f : X \to Y$ and $g : Y \to Z$ are continuous, then the map $g(f) : X \to Z$ is continuous.
+d) If $f : X \to Y$ is continuous, and if A is a subspace of X, then the restricted function $f | A : A \to Y$ is continuous.
+e) Let $f : X \to Y$ be continuous. If Z is a subspace of Y containing the image set $f(X)$, then the function $g : X \to Z$ obtained by restricting the range of f is continuous. If Z is a space having Y as a subspace, then the function $h : X \to Z$ obtained by expanding the range of f is continuous.
+f) The map $f : X \to Y$ is continuous if X can be written as the union of open sets $U_\alpha$ such that $f | U_\alpha$ is continuous for each $\alpha$.
+
+**Theorem 18.3**
+Let $X = A \cup B$, where A and B are closed in X. Let $f : A \to Y$ and $g : B \to Y$ be continuous. If $f(x) = g(x)$ for every $x \in (A \cap B)$, then f and g combine to give a continuous function $h : X \to Y$, defined by setting $h(x) = f(x)$ if $x \in A$, and $h(x) = g(x)$ if $x \in B$.
+
+**Theorem 18.4**
+Let $f : A \to X \times Y$ be given by the equation $f(a) = (f_1(a), f_2(a))$. Then f is continuous iff the functions $f_1 : A \to X$ and $f_2 : A \to Y$ are continuous. The maps $f_1$ and $f_2$ are called coordinate functions of f.
+
+### Visual Aids
+![[Screenshot from 2026-02-13 13-14-40.png]]
+
+### References
+- *Book Title* — Chapter X, Pages Y–112

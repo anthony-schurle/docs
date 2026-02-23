@@ -1,0 +1,20 @@
+1) Prove that for functions $f : \mathbb{R} \to \mathbb{R}$, the definition of continuity implies the open set definition.
+Suppose for f, $|x - x_0| < \delta \implies |f(x) - f(x_0)| < \epsilon$. Then let V be a basis element of $\mathbb{R}$ so that $V = (a, b)$. It suffices to only work with basis elements as their union is open. Notice $f^{-1}(V) = \{x \in \mathbb{R} : f(x) \in V\}$. Pick $z \in f^{-1}(V)$. Then $f(z) \in (a, b)$. Let $\epsilon = \text{min}(f(z) - a, b - f(z))$. By continuity, $f(x) \in (f(z) - \epsilon, \epsilon + f(z))$ for all $x \in (z - \delta, z + \delta)$. But then $(z - \delta, z + \delta) \subseteq f^{-1}(V)$ and so $f^{-1}(V)$ is open because z was an arbitrary point. Thus, for functions $f : \mathbb{R} \to \mathbb{R}$, the definition of continuity implies the open set definition. $\blacksquare$
+
+2) Given $x_0 \in X \land y_0 \in Y$, show that the maps $f: X \to X \times Y$ and $g: Y \to X \times Y$ defined by $f(x) = x \times y_0$ and $g(y) = x_0 \times y$ are imbeddings.
+($f(x)$):
+Suppose $f(x_1) = f(x_2)$ such that $(x_1, y_0) = (x_2, y_0)$. It follows that $x_1 = x_2$ and so f is injective. Consider arbitrary basis element V of $X \times Y$. By definition of the product topology, $V = U \times W$ for basis element U of X and basis element W of Y. So, $f^{-1}(V) = f^{-1}(U \times W) = U$ (or the empty set if W does not contain $y_0$ which is trivially open). But U is open in X so $f^{-1}(V)$ is open in X making f continuous. Let $Z = \{x \times y_0 : x \in X\}$. Clearly, $Z \subseteq X \times Y$ and is the image of f. Now define $h : X \to Z$ where $h(x) = x \times y_0$. Because f was injective, h is injective. Also, since Z is exactly the image of f, h is surjective. Therefore, h is bijective. Now suppose I is open in X. We see that $h(I) = I \times \{y_0\}$. But this is simply $(I \times T) \cap Z$ for some open set T of Y containing $y_0$ (Y is one such set) which is an open set of Z by definition of the subspace topology for the product topology of $X \times Y$. Therefore, $h(I)$ is open in Z. It follows that f is an imbedding. $\blacksquare$
+
+($g(y)$):
+Suppose $g(y_1) = g(y_2)$ such that $(x_0, y_1) = (x_0, y_2)$. It follows that $y_1 = y_2$ and so g is injective. Consider arbitrary basis element V of $X \times Y$. By definition of the product topology, $V = U \times W$ for basis element U of X and basis element W of Y. So, $g^{-1}(V) = g^{-1}(U \times W) = W$ (or the empty set if U does not contain $x_0$ which is trivially open). But W is open in Y so $g^{-1}(V)$ is open in Y making g continuous. Let $Z = \{x_0 \times y : y \in Y\}$. Clearly, $Z \subseteq X \times Y$ and is the image of g. Now define $h : Y \to Z$ where $h(y) = x_0 \times y$. Because g was injective, h is injective. Also, since Z is exactly the image of g, h is surjective. Therefore, h is bijective. Now suppose I is open in Y. We see that $h(I) = \{x_0\} \times I$. But this is simply $(T \times I) \cap Z$ for some open set T of X containing $x_0$ (X is one such set) which is an open set of Z by definition of the subspace topology for the product topology of $X \times Y$. Therefore, $h(I)$ is open in Z. It follows that g is an imbedding. $\blacksquare$
+
+10) Let $f: A \to B$ and $g : C \to D$ by continuous functions. Let us define a map $f \times g: A \times C \to B \times D$ be the equation $(f \times g)(a \times c) = f(a) \times g(c)$. We can show that $f \times g$ is continuous.
+It suffices to check basis elements, as noted in the book. Let V be a basis element of $B \times D$. By definition of the product topology, $V = U \times W$ where U is a basis element of B and W is a basis element of D. So, 
+$$
+(f \times g)^{-1}(V) = (f \times g)^{-1}(U \times W) = \{(a, c) : (f(a), g(c)) \in U \times W\}
+$$
+$$
+= \{a : f(a) \in U\} \times \{c : g(c) \in W\} = f^{-1}(U) \times g^{-1}(W)
+$$
+
+. But f and g are continuous, so $f^{-1}(U)$ and $g^{-1}(W)$ are open. By definition of the product topology, $f^{-1}(U) \times g^{-1}(W)$ is open in $A \times C$. Therefore, $(f \times g)^{-1}(V)$ is open in $A \times C$. Thus, $f \times g$ is continuous. $\blacksquare$

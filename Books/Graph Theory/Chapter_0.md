@@ -265,9 +265,6 @@ Such graphs $G'$ exist since G is one; let H be one of smaller order. No graph $
 
 ## 0.4 Trees And Forests
 ---
-### Key Concepts
-- **Concept Name**:
-  - Subpoint or clarification.
 ### Definitions
 - **Forest**
   - Acyclic graph.
@@ -295,7 +292,7 @@ Such graphs $G'$ exist since G is one; let H be one of smaller order. No graph $
 - **Tree Height**
   - Distance k from the root of a tree have height k.
   - Vertices at height k form the kth level of a tree.
-- **Normal Tree**
+- **Normal Tree (Depth-First-Trees)**
   - Rooted tree contained in a graph G where the ends of every T-path in G are comparable in the tree-order of T.
   - If T spans G, this requires that two vertices of T must be comparable when they are adjacent in G.
 
@@ -304,7 +301,6 @@ Such graphs $G'$ exist since G is one; let H be one of smaller order. No graph $
 The following assertions are equivalent for a graph T:
 (i) T is a tree;
 (ii) Any two vertices of T are linked by a unique path in T;
-(iii) T is minimally connected, i.e. T is connected but $T - e$ is disconnected for every edge $e \in T$.
 (iv) T is maximally acyclic, i.e. T contains no cycle but $T + xy$ does, for any two non-adjacent vertices $x, y \in T$.
 
 **Corollary 1.5.2**
@@ -319,38 +315,97 @@ Map the vertices of T to G inductively, following their enumeration from Proposi
 
 **Lemma 1.5.4**
 Let T be a normal tree in G.
-(i) Any two vertices 
+(i) Any two vertices x, y of T that are incomparable in its tree-order are separated in G by the set $\lceil x \rceil \cap \lceil y \rceil$.
+(ii) If $V(T) = V(G) =: V$ and $S \subseteq V$ is down-closed, then the components of $G - S$ are spanned by the sets $\lfloor x \rfloor$ with x minimal in $V \backslash S$.
 
- ### Formulas
-**Formula Name**
-Description.
-$$
-Equation
-$$
-### Visual Aids
-| Header | Header |
-| - | - |
-| Content | Content |
-![Diagram]()
-### Examples
-**Example Title**
-**Problem:**
-Problem Statement.
-**Solution:**
-Solution Statement.
-### Notable Quotes
-> “Notable quote."
-### Common Pitfalls
-- Pitfall 1.
-### Related Links
-- [Link]()
+(i) As x and y are incomparable, neither of them lies in $\lceil x \rceil \cap \lceil y \rceil$. So it suffices to show that every $x-y$ path P in G meets $\lceil x \rceil \cap \lceil y \rceil$. Let Let $t_1,...,t_n$ be a minimal sequence of vertices in $P \cap T$ such that $t_1 = x$ and $t_n = y$ and $t_i$ and $t_{i+1}$ are comparable in the tree-order of T for all i. (Such a sequence exists: the set of all vertices in $P \cap T$, in their natural order as they occur on P, has this property because T is normal and every segment $t_iPt_{i+1}$ is either an edge of T or a $T-path$.) In our minimal sequence we cannot have $t_{i-1} < t_i > t_{i+1}$ for any i, since $t_{i-1}$ and $t_{i+1}$ would then be comparable, and deleting $t_i$ would yield a smaller sequence. Thus, our sequence has the form $x = t_1 > ... > t_k < ... < t_n = y$ for some $k \in \{1, ..., n\}$ (even with $k \le 3$, by the minimality of n). As $t_k \in \lceil x \rceil \cap \lceil y \rceil \cap V(P)$, our proof is complete.
+(ii) Every set $\lfloor x \rfloor$ as in (ii) is connected in T, and hence in G. It lies in $V \backslash S$, because $x \not \in S$ and S is down-closed. As every vertex in $V \backslash S$ lies above some minimal such vertex x, these sets $\lfloor x \rfloor$ have union $V \backslash S$. For distinct x and x', the connected sets $\lfloor x \rfloor$ and $\lfloor x' \rfloor$ are disjoint, and not joined by an edge of G, because $\lceil x \rceil \cap \lceil x' \rceil \subseteq S$ separates x from x' in G, by (i). So the sets $\lfloor x \rfloor$ span maximal connected subgraphs, components, in G - S, and these are all its components.
+
+**Proposition 1.5.5**
+Every connected graph has a normal spanning tree.
+
+Let G be a connected graph. Let T be any maximal normal tree in G; we show that $V(T) = V(G)$. Suppose not, and let C be a component of $G - T$. As T is normal, $N(C)$ is a chain in T. Let x be its greatest element, and let $y \in C$ be adjacent to x. Let $T'$ be the tree obtained from T by joining y to x; the tree-order of T' then extends that of T. We shall derive a contradiction by showing that T' is also normal in G. Let P be a $T'-path$ in G. If the ends of P both lie in T, then they are comparable in the tree-order of T, because then P is also a T-path and T is normal in G by assumption. If not, then y is one end of P, so P lies in C except for its other end z, which lies in $N(C)$. Then $z \le x$, by the choice of x. For our proof that y and z are comparable it thus suffices to show that $x < y$. This however, is clear since y is a leaf of $T'$ with neighbor x. $\blacksquare$
+
 ### References
-- *Book Title* — Chapter X, Pages Y–Z
+- *Book Title* — Chapter X, Pages Y–16
 
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
 
-- [Related Chapter in This Wiki]()  
+## 0.5 Bipartite Graphs
+---
+### Definitions
+- **R-Partite**
+  - $r \ge 2$ where a graph G admits a partition into r classes such that every edge has its ends in different classes.
+  - Complete iff every two vertices from different partitions classes are adjacent.
+- **Complete Multipartite Graphs**
+  - Complete iff every two vertices from different partitions classes are adjacent.
+  - Denoted $K_{n_1,...,n_r}$ unless all $n_i$ is the same, instead we denote $K_{n}^r$.
+  - Stars denoted $K_{1, n}$.
 
-- [Official Specification or Standard Document (PDF/URL)]()  
+### Theorems & Proofs
+**Proposition 1.6.1**
+A graph is bipartite iff it contains no odd cycle.
 
-- Class Lecture ([Link]())
+Let $G = (V, E)$ be a graph without odd cycles; we show that G is bipartite. Clearly, a graph is bipartite if all its components are bipartite or trivial, so we may assume that G is connected. Let T be a spanning tree in G, pick a root $r \in T$, and denote the associated tree-order on V by $\le_T$. For each $v \in V$, the unique path $rTv$ has odd or even length. This defines a bipartition of V; we show that G is bipartite with this partition. Let $e = xy$ be an edge of G. If $e \in T$, with $x <_T y$ say, then $rTy = rTxy$ and so x and y lie in different partition classes. If $e \not \in T$ then $C_e := xTy + e$ is a cycle, and by the case treated already the vertices along $xTy$ alternate between the two classes. Since $C_e$ is even by assumption, x and y again lie in different classes. $\blacksquare$
+
+### References
+- *Book Title* — Chapter X, Pages Y–18
+
+
+## 0.6 Contraction And Minors
+---
+### Definitions
+- **Subdivision**
+  - TX subdivision of X replaces some edges in X with new paths between their ends.
+  - Original vertices of X are the branch vertices, original degree.
+  - New vertices called subdividing vertices, degree 2.
+- **Topological Minor**
+  - Graph Y contains a TX as a subgraph makes X a topological minor of Y.
+- **Contraction Minor**
+  - X is a contraction minor of G if G is an IX where its vertex set admits a partition $\{V_X : x \in V(x)\}$ into connected subsets $V_x$ such that distinct vertices $x,y \in V(X)$ are adjacent in X iff G contains a $V_x - V_y$ edge.
+  - Sets $V_x$ are the branch sets of the IX.
+- **Minor**
+  - If Y contains IX, then X is a minor of Y and IX is a model of X in Y denoted by $X \le Y$?
+  - X is a minor of Y iff there is $A \subseteq V(Y)$ where $\phi : A \to V(X)$ such that $\forall x \in X$, $\phi^{-1}(x)$ is connected in Y and $\forall xx' \in E(X)$ there is an edge in Y between the branch sets $\phi^{-1}(x)$ and $\phi^{-1}(x')$ of its ends.
+  - $\phi$ is a contraction of Y onto X if $\phi : V(Y) \to V(X)$ and $xx' \in E(X)$ whenever $x \ne x'$ and Y has an edge between $\phi^{-1}(x)$ and $\phi^{-1}(x')$.
+  - Since branch sets can be singletons, every subgraph of a graph is also its minor.
+  - $P = \{V_x : x \in X\}$ for a partition of $V(G)$ where X is a minor. Contraction minor denoted $G / P := X$. If $U = V_x$ is the only non-singleton branch, we denote $G / U := X$ and $v_U$ for the vertex $x \in X$ to which U contracts. Rest of X thought as induced subgraph.
+- **Embedding**
+  - Embedding of G in H is an injective $\phi : V(G) \to V(H)$ that preserves structure.
+
+### Theorems & Proofs
+**Proposition 1.7.1**
+The minor relation and the topological-minor relation are partial orderings on the class of finite graphs.
+
+**Corollary 1.7.2**
+Let X and Y be finite graphs. X is a minor of Y iff the are graphs $G_0, ..., G_n$ such that $G_0 = Y$ and $G_ n = X$ and each $G_{i+1}$ arises from $G_I$ by deleting an edge, contracting an edge, or deleting a vertex.
+
+Induction on $|Y| + ||Y||$. $\blacksquare$
+
+**Proposition 1.7.3**
+i) Every $TX$ is also an $IX$; thus every topological minor of a graph is also its ordinary minor.
+ii) IF $\Delta (X) \le 3$, then every IX contains a TX; thus, every minor with maximum degree at most 3 of a graph is also its topological minor. $\blacksquare$
+
+### Visual Aids
+![[Screenshot from 2026-02-11 10-39-17.png]]
+
+### References
+- *Book Title* — Chapter X, Pages Y–21
+
+
+## 0.7 Euler Tours
+---
+### Definitions
+- **Euler Tour**
+  - Closed walk that traverses every edge of a graph exactly once.
+  - Graph is said ti be Eulerian if it contains a Euler Tour.
+
+### Theorems & Proofs
+**Theorem 1.8.1**
+A connected graph is Eulerian iff every vertex has even degree.
+
+The degree condition is clearly necessary; a vertex appearing k times in an Euler tour (or k + 1 for the start/end vertex) must have degree 2k. Conversely, we show by induction on $||G||$ that every connected graph G with all degrees even has an Euler tour. THe induction starts trivially with $||G|| = 0$. Now let $||G|| \ge 1$. Since all degrees are even, we can find in G a non-trivial closed walk that contains no edge more than once. Let W be such a walk of maximal length, and write F for the set of its edges. If $F = E(G)$, then W is an Euler tour. Suppose, therefore, that $G' := G - F$ has an edge. For every vertex $v \in G$, an even number of the edges of G at v lies in F, so the degrees of $G'$ are again all even. Since G is connected, $G"$ has an edge e incident with a vertex on W. By the induction hypothesis, the component C of $G'$ containing e has an Euler tour. Concatenating this with W, we obtain a closed walk in G that contradicts the maximal length of W. $\blacksquare$
+
+### References
+- *Book Title* — Chapter X, Pages Y–23
+
+Skipped 1.9 and 1.10, please finish later.

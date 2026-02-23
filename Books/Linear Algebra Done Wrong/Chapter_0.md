@@ -597,7 +597,7 @@ $$
   - $A: V \to W$ is left invertible if $\exists B: W \to V (BA = I)$.
   - Matrix is left invertible if the transformation is.
 - **Right Invertible**
-  - $A: V \to W$ is left invertible if $\exists B: W \to V (AB = I)$.
+  - $A: V \to W$ is right invertible if $\exists B: W \to V (AB = I)$.
   - Matrix is right invertible if the transformation is.
 - **Invertible\Isomorphism**
   - Left and right invertible.
