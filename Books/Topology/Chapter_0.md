@@ -307,7 +307,7 @@ Every simply ordered set is a Hausdorff space in the order topology. The product
 Let X and Y be topological spaces; let $f: X \to Y$. Then the following are equivalent:
 1)f is continuous.
 2)For every $A \subseteq X$, one has $f(\overline{A}) \subseteq \overline{f(A)}$.
-3)For every closed set B of Y, $f^{-1}(B)$ is closed in X.
+3)For every closed set B of Y, $f^{-1}(B)$ is cclosed selosed in X.
 4)$\forall x \in X$ and each neighborhood V of $f(x)$, $\exists$ neighborhood U of x such that $f(U) \subseteq V$.
 
 **Theorem 18.2**
