@@ -330,3 +330,263 @@ Let $f : A \to X \times Y$ be given by the equation $f(a) = (f_1(a), f_2(a))$. T
 
 ### References
 - *Book Title* — Chapter X, Pages Y–112
+
+
+## 0.7 The Product Topology
+---
+### Definitions
+- **Box Topology**
+  - Let $\{X_\alpha\}_{\alpha \in J}$ be an indexed family of topological spaces. Basis for $\prod_{\alpha \in J}X_\alpha$ is the collection of all sets of the form $\prod_{\alpha \in J}U_\alpha$ where $U_\alpha$ is open in $X_\alpha$.
+- **Product Topology**
+  - Let $S_\beta = \{\pi^{-1}_\beta(U_\beta) : U_\beta \text{ open in } X_\beta\}$ and let $S = \bigcup_{\beta \in J}S_\beta$. S is a subbasis and $\prod_{\alpha \in J}X_\alpha$ is the product space.
+- **J-Tuple**
+  - Let J be an index set. Given a set X, the mapping $x : J \to X$ is a J-Tuple. Coordinate denoted $x_\alpha$. Function itself typically denoted $(x_\alpha)_{\alpha \in J}$. Set of all J-tuples denoted $X^J$.
+- **Cartesian Product**
+  - Let $\{A_\alpha\}_{\alpha\in J}$ be an indexed family of sets. Let $X = \bigcup_{\alpha \in J}A_\alpha$. The cartesian product is $\prod_{\alpha \in J}A_\alpha$ the set of all functions $x: J \to X$ such that $x(\alpha) \in A_\alpha$ for each $\alpha \in J$.
+- **Projection Mapping**
+  - Let $\pi_\beta : \prod_{\alpha \in J}X_\alpha \to X_\beta$ be $\pi_\beta((x_\alpha)_{\alpha \in J}) = x_\beta$.
+
+### Theorems & Proofs
+**Theorem 19.1**
+The box topology on $\prod X_\alpha$ has as basis all sets of the form $\prod U_\alpha$, where $U_\alpha$ is open in $X_\alpha$ for each $\alpha$. The product topology on $\prod X_\alpha$ has as basis all sets of the form $\prod U_\alpha$, where $U_\alpha$ is open in $X_\alpha$ for each $\alpha$ and $U_\alpha$ equals $X_\alpha$ except for finitely many values of $\alpha$.
+
+**Theorem 19.2**
+Suppose the product topology on each space $X_\alpha$ is given by a basis $\beta_\alpha$. The collection of all sets of the form $\prod_{\alpha \in J}B_\alpha$ where $B_\alpha \in \beta_\alpha$ for each $\alpha$, will serve as a basis for the box topology on $\prod_{\alpha \in J}X_\alpha$. The collection of all sets of the same form, where $B_\alpha \in \beta_\alpha$ for finitely many indices $\alpha$ and $B_\alpha = X_\alpha$ for all the remaining indices, will serve as a basis for the product topology $\prod_{\alpha \in J}X_\alpha$.
+
+**Theorem 19.3**
+Let $A_\alpha$ be a subspace of $X_\alpha$, for each $\alpha \in J$. Then $\prod A_\alpha$ is a subspace of $\prod X_\alpha$ if both products are given the box topology, or if both products are given the product topology.
+
+**Theorem 19.4**
+If each space $X_\alpha$ is a Hausdorff space, then $\prod X_\alpha$ is a Hausdorff space in both the box and product topologies.
+
+**Theorem 19.5**
+Let $\{X_\alpha\}$ be an indexed family of spaces; let $A_\alpha \subseteq X_\alpha$ for each $\alpha$. If $\prod X_\alpha$ is given either the product or the box topology, then $\prod \overline{A_\alpha} = \overline{\prod A_\alpha}$.
+
+Use open neighborhoods. $\blacksquare$
+
+**Theorem 19.6**
+Let $f : A \to \prod_{\alpha \in J}X_\alpha$ be given the equation $f(a) = (f_\alpha (a))_{\alpha \in J}$ where $f_\alpha : A \to X_\alpha$ for each $\alpha$. Let $\prod X_\alpha$ have the product topology. Then the function f is continuous iff each function $f_\alpha$ is continuous.
+
+### Common Pitfalls
+- Product topology assumed over box topology.
+
+### References
+- *Book Title* — Chapter X, Pages Y–118
+
+
+## 0.8 The Metric Topology
+---
+### Definitions
+- **Metric**
+  - Metric on a set X is a function $d : X \times X \to R$ with the properties:
+  - 1) $d(x, y) \ge 0$ for all $x, y \in X$; equality holds iff $x = y$.
+  - 2) $d(x, y) = d(y, x)$ for all $x, y \in X$.
+  - 3) $d(x, y) + d(y, z) \ge d(x, z)$ for all $x, y, z \in X$.
+  - $d(x, y)$ often called the distance between x and y.
+  - Standard metric is $d(x, y) = |x - y|$.
+- **$\epsilon$-ball Centered At x**
+  - $B_d(x, \epsilon) = \{y : d(x, y) < \epsilon\}$.
+- **Metric Topology**
+  - Basis for X is the collection of all $\epsilon$-balls $B_d(x, \epsilon)$ for $x \in X$ and $\epsilon > 0$.
+  - The topological space X is called metrizable if there exists a metric d on X that induces its topology.
+  - Metric space is the space X along with the metric d that gives its topology.
+
+- **Bounded**
+  - Let X be a metric space with metric d. $A \subseteq X$ is bounded if for some M $d(a_1, a_2) \le M$ for every pair $a_1, a_2 \in A$.
+- **Diameter**
+  - If A is bounded and nonempty, its diameter is $diam A = sup\{d(a_1, a_2) : a_1, a_2 \in A\}$.
+- **Norm**
+  - Given $x = (x_1, ..., x_n) \in \mathbb{R}^n$ we define the norm of x by $||x|| = (x_1^2 + ... + x_n^2)^{0.5}$.
+- **Euclidean Metric**
+  - Given $x = (x_1, ..., x_n) \in \mathbb{R}^n$ we define the euclidean metric d on $\mathbb{R}^n$ by $d(x, y) = ||x - y||$.
+- **Square Metric**
+  - Given $x = (x_1, ..., x_n) \in \mathbb{R}^n$ we define the square metric on $\mathbb{R}^n$ by $p(x, y) = max\{|x_1 - y_1|, ..., |x_n - y_n|\}$.
+- **Uniform Metric**
+  - Given index set J and points $x = (x_\alpha)_{\alpha\in J}$ and $y = (y_\alpha)_{\alpha\in J}$ of $\mathbb{R}^J$, define a metric $\overline{p}$ on $\mathbb{R}^J$ by $\overline{p}(x, y) = sup\{\overline{d}(x_\alpha, y_\alpha) : \alpha \in J\}$ where $\overline{d}$ is the standard bounded metric on $\mathbb{R}$. It induces the uniform topology.
+
+### Theorems & Proofs
+**Theorem 20.1**
+Let X be a metric space with metric d. Define $\overline{d} : X \times X \to \mathbb{R}$ by $\overline{d}(x, y) = min\{d(x, y), 1\}$. Then $\overline{d}$ is a metric that induces the same topology as d and is called the standard bounded metric.
+
+**Lemma 20.2**
+Let d and d' be two metrics on the set X; let $\Gamma$ and $\Gamma$' be the topologies they induce, respectively. Then $\Gamma'$ is finer than $\Gamma$ iff for each $x \in X$ and each $\epsilon > 0$, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subseteq B_d(x, \epsilon)$.
+
+**Theorem 20.3**
+The topologies on $\mathbb{R}^n$ induced by the euclidean metric d and the square metric p are the same as the product topology on $\mathbb{R}^n$.
+
+Show both metric topologies are the same by comparing metric distances and then balls. Use square metric to show product topology is also the same. $\blacksquare$
+
+**Theorem 20.4**
+The uniform topology on $\mathbb{R}^J$ is finer than the product topology and coarser than the box topology; these topologies are all different if J is infinite.
+
+**Theorem 20.5**
+Let $\overline{d}(a, b) = min\{|a - b|, 1\}$ be the standard bounded metric on $\mathbb{R}$. If x and y are two points of $\mathbb{R}^\omega$, define $D(x, y) = sup\{\frac{\overline{d}(x_i, y_i)}{i}\}$. Then D is a metric that induces the product topology on $\mathbb{R}^\omega$.
+
+### References
+- *Book Title* — Chapter X, Pages Y–129
+
+
+## 0.9 The Metric Topology (continued)
+---
+### Key Concepts
+- **Concept Name**:
+  - Subpoint or clarification.
+### Definitions
+- **Term 1**
+  - Concise explanation of the term.
+### Algorithms
+**Algorithm Name**
+Description.
+```pseudo
+1. Step 1
+2. Step 2
+3. Step 3
+```
+### Code Snippets
+**Snippet Name**
+Description.
+```program
+// code
+```
+### Theorems & Proofs
+**Theorem Name**
+Proof.
+### Formulas
+**Formula Name**
+Description.
+$$
+Equation
+$$
+### Visual Aids
+| Header | Header |
+| - | - |
+| Content | Content |
+![Diagram]()
+### Examples
+**Example Title**
+**Problem:**
+Problem Statement.
+**Solution:**
+Solution Statement.
+### Notable Quotes
+> “Notable quote."
+### Common Pitfalls
+- Pitfall 1.
+### Related Links
+- [Link]()
+### References
+- *Book Title* — Chapter X, Pages Y–136
+
+- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
+
+- [Related Chapter in This Wiki]()  
+
+- [Official Specification or Standard Document (PDF/URL)]()  
+
+- Class Lecture ([Link]())
+
+
+## 0.10 The Quotient Topology
+---
+### Definitions
+- **Quotient Map**
+  - Let X and Y be topological spaces; let $p : X \to Y$ be a surjective map. p is a quotient map provided a subset U of Y is open iff $p^{-1}(U)$ is open in X.
+  - Let X and Y be topological spaces; let $p : X \to Y$ be a surjective map. p is a quotient map provided a subset U of Y is closed iff $p^{-1}(U)$ is closed in X.
+  - Let X and Y be topological spaces; let $p : X \to Y$ be a surjective map. p is a quotient map provided p is continuous and maps saturated open sets of X to open sets of Y.
+- **Saturated**
+  - Subset C of X is saturated with respect to surjective map $p : X \to Y$ if C contains every set $p^{-1}(\{y\})$ that it intersects.
+- **Open\Closed Maps**
+  - $f : X \to Y$ is open if for each open set U of X, $f(U)$ is open in Y.
+  - $f : X \to Y$ is closed if for each closed set U of X, $f(U)$ is closed in Y.
+- **Quotient Topology**
+  - If X is a space and A is a set with the surjective map $p : X \to A$, then the quotient topology is defined by subsets U of A iff $p^{-1}(U)$ open in X making p a quotient map.
+- **Quotient Space\Identification Space**
+  - Let X be a topological space and $X*$ a partition of X into disjoint subsets whose union is X. Let $p: X \to X*$ be a surjective map carrying each point of X to the element in X* containing it, $X*$ is the quotient space of X then induced by p.
+
+### Theorems & Proofs
+**Theorem 22.1**
+Let $p : X \to Y$ be a quotient map; let A be a subspace of X that is saturated with respect to p; let $q : A \to p(A)$ be the map obtained by restricting p.
+1) If A is either open or closed in X, then q is a quotient map.
+2) If p is either an open map or a closed map, then q is a quotient map.
+
+**Theorem 22.2**
+Let $p: X \to Y$ be a quotient map. Let Z be a space and let $g : X \to Z$ be a map that is constant on each set $p^{-1}(\{y\})$, for $y \in Y$. Then g induces a map $f : Y \to Z$ such that $f \circ p = g$. The induced map f is continuous iff g is continuous; f is a quotient map iff g is a quotient map. 
+
+**Corollary 22.3**
+Let $g : X \to Z$ be a surjective continuous map. Let $X*$ be the following collection of subsets of X:
+$$
+X* = \{g^{-1}(\{z\}) : z \in Z\}
+$$
+Give $X*$ the quotient topology.
+a) The map g induces a bijective continuous map $f : X* \to Z$, which is a homeomorphism iff g is a quotient map.
+b) If Z is Hausdorff, so is $X*$.
+
+### Visual Aids
+![[Screenshot from 2026-03-05 23-57-02.png]]
+
+### Examples
+**Example Title**
+**Problem 2:**
+a)
+Let $p : X \to Y$ be a continuous map. Show that if there is a continuous map $f: Y \to X$ such that $p \circ f$ equals the identity map of Y, then p is a quotient map.
+b)
+If $A \subseteq X$, a retraction of X onto A is a continuous map $r : X \to A$ such that $r(a) = a$ for each $a \in A$. Show that a retraction is a quotient map.
+**Solution:**
+a)
+Suppose $p^{-1}(V)$ is open in X. Since f is continuous, we see that $f^{-1}(p^{-1}(V))$ must be open in Y. But this is equivalent to $(p \circ f)^{-1}(V)$ open in Y and since $p \circ f$ is just the identity map of Y, $(p \circ f)^{-1}(V) = V$. Therefore, V open in Y. Now consider arbitrary $y \in Y$. Define $x = f(y)$. We see that $p(f(y)) = y$ by assumption and so p is surjective since y was arbitrary. $\blacksquare$
+
+b)
+Consider arbitrary $a \in A$. We see that $r(a) = a$ and since a was arbitrary, r is surjective. Consider arbitrary open set $r^{-1}(V)$ of X where V is a subset of A. By definition of the subspace topology, $r^{-1}(V) \cap A$ is open in A. By the definition of r, $r^{-1}(V) \cap A = V$ and so V is open in A. But $r^{-1}(V)$ was arbitrary, and so r is a quotient map. $\blacksquare$
+
+**Problem 3:**
+Let $\pi_1 : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ be projection on the first coordinate. Let A be the subspace of $\mathbb{R} \times \mathbb{R}$ consisting of all points $x \times y$ for which either $x \ge 0$ or $y = 0$ (or both); let $q : A \to \mathbb{R}$ be obtained by restricting $\pi_1$. We can show that q is a quotient map that is neither open nor closed.
+**Solution:**
+First we show q is a quotient map. Consider arbitrary $x \in \mathbb{R}$ and define $(x, 0) \in A$. Then $q(x, 0) = x$ and so q is surjective because x was arbitrary. We now show continuity. Consider arbitrary open basis element $(a, b)$ of $\mathbb{R}$. Case 1: $a \ge 0$. Then $q^{-1}(a, b) = (a, b) \times \mathbb{R} = A \cap (a, b) \times \mathbb{R}$ which is open in A because $(a, b), \mathbb{R}$ both open in $\mathbb{R}$. Case 2: $a < 0$. Sub-Case 1: $0 \not \in (a, b)$. Then $q^{-1}(a, b) = (a, b) \times 0 = A \cap (a, b) \times \mathbb{R}$ which is open because both $(a, b), \mathbb{R}$ open in $\mathbb{R}$. Sub-Case 2: $0 \in (a, b)$. Then $q^{-1}(a,b) = [(a, 0) \times 0] \cup [[0, b) \times \mathbb{R}]$. Continuing, $q^{-1}(a,b) = [A \cap (a, 0) \times \mathbb{R}] \cup [A \cap (-1, b) \times (\mathbb{R} - \{0\})]$. But $(a, 0), (-1, b), \mathbb{R}, (\mathbb{R} - \{0\} = (-\infty, 0) \cup (0, \infty))$ all open in $\mathbb{R}$ so $q^{-1}(a,b)$ is a union of two open sets of A which is open. Thus, q is continuous. Define $h(x) = (x, 0)$ for $h : \mathbb{R} \to A$. Then notice $q \circ h (x) = x$ which is the identity of $\mathbb{R}$ and so by problem 2a, q is a quotient map. Now we show q is not open. Notice $[0, 1) \times (0, 1) = A \cap (-1, 1) \times (0, 1)$ is an open set of A where $(-1, 1) \times (0, 1)$ open in $\mathbb{R} \times \mathbb{R}$. But $q([0, 1) \times (0, 1)) = [0, 1)$ which is not open in $\mathbb{R}$ and so q is not open. Finally, we show q is not closed. Define $U = (-\infty, -1) \cup [1, \infty) \times \{0\}$ and see that $A - U = [0, 1) \times \mathbb{R} - \{0\} = A \cap (-\infty, 1) \times (-\infty, 0) \cup (0, \infty)$ which is open because $(-\infty, 1), (-\infty, 0) \cup (0, \infty)$ both open in $\mathbb{R}$. Then $q(U) = (-\infty, -1) \cup [1, \infty)$ and $\mathbb{R} - q(U) = [-1, 1)$ which is not open in $\mathbb{R}$. Therefore, $q(U)$ is not closed in $\mathbb{R}$. Thus, q is not a closed map. We have shown q is a quotient map that is neither open nor closed. $\blacksquare$
+
+**Problem 4:**
+a)
+Define an equivalence relation on the plane $X = \mathbb{R}^2$ as follows:
+$$
+x_0 \times y_0 R x_1 \times y_1 \text{ if } x_0 + y_0^2 = x_1 + y_1^2
+$$
+Let X* be the corresponding quotient space. It is homeomorphic to a familiar space; what is it?
+b)
+Repeat (a) for the equivalence relation
+$$
+x_0 \times y_0 R x_1 \times y_1 \text{ if } x_0^2 + y_0^2 = x_1^2 + y_1^2
+$$
+**Solution:**
+a)
+Define the map $g : X \to \mathbb{R}$ where $g(x \times y) = x + y^2$. It suffices to show g is a quotient map, so by corollary 22.3 we see that $X*$ is homeomorphic to $\mathbb{R}$. Consider arbitrary $c \in \mathbb{R}$. Notice $g(c \times 0) = c + 0^2 = c$ and since c was arbitrary, g is surjective. g is a polynomial and so is continuous, and implies the topological definition of continuity as shown earlier in the book. Define $h : \mathbb{R} \to X$ by $h(x) = (x, 0)$. Notice $g \circ h (x) = x$ which is just the identity map of $\mathbb{R}$ and so g is a quotient map by problem 2a. Lastly, we verify the construction of X* as a collection of $\{g^{-1}(\{z\}) : z \in \mathbb{R}\}$. Consider arbitrary $z \in X*$. By construction of X*, $z = \{(x, y) : x + y^2 = c\}$ for some fixed c. But $\{(x, y) : x + y^2 = c\} = \{g^{-1}(\{c\}): c \in \mathbb{R}\}$ and since z was arbitrary, any element of $X*$ is defined by the construction of corollary 22.3.
+$\blacksquare$
+
+b)
+Define the map $g : X \to [0, \infty)$ where $g(x \times y) = x^2 + y^2$. It suffices to show g is a quotient map, so by corollary 22.3 we see that $X*$ is homeomorphic to $[0, \infty)$. Consider arbitrary $c \in [0, \infty)$. Notice $g(\sqrt{c} \times 0) = c + 0^2 = c$ and since c was arbitrary, g is surjective. g is a polynomial and so is continuous, and implies the topological definition of continuity as shown earlier in the book. Define $h : [0, \infty) \to X$ by $h(x) = (\sqrt{x}, 0)$. Notice $g \circ h (x) = x$ which is just the identity map of $[0, \infty)$ and so g is a quotient map by problem 2a. Lastly, we verify the construction of X* as a collection of $\{g^{-1}(\{z\}) : z \in [0, \infty)\}$. Consider arbitrary $z \in X*$. By construction of X*, $z = \{(x, y) : x^2 + y^2 = c\}$ for some fixed c. But $\{(x, y) : x^2 + y^2 = c\} = \{g^{-1}(\{c\}): c \in [0, \infty)\}$ and since z was arbitrary, any element of $X*$ is defined by the construction of corollary 22.3.
+$\blacksquare$
+
+Problem 2 (Supp):
+A topological group $G$ is a group that is also a topological space satisfying the $T_1$ axiom, such that the map of $G \times G$ into $G$ sending $x \times y$ into $x \cdot y$, and the map of $G$ into $G$ sending $x$ into $x^{-1}$, are continuous maps. Throughout the following exercises, let $G$ denote a topological group.
+Show that the following are topological groups:
+a) $(\mathbb{Z}, +)$
+b) $(\mathbb{R}, +)$
+c) $(\mathbb{R}_{+}, \cdot)$
+d) $(S^1, \cdot)$, where $S^1$ is the space of all complex numbers $z$ for which $|z| = 1$.
+e) $GL(n)$ under matrix multiplication. ($GL(n)$ is the set of all nonsingular $n \times n$ matrices, topologized by considering it as a subset of euclidean space of dimension $n^2$ in the obvious way).
+Solution:
+a)
+We use the order topology. By Theorem 17.11, every simply ordered set is a Hausdorff space in the order topology and so the order topology on $\mathbb{Z}$ satisfies the $T_1$ axiom. Notice the order topology on $\mathbb{Z}$ coincides with its discrete topology as we can get any single point $n \in \mathbb{Z}$ by the basis element $(n - 1, n + 1)$ and unions of these single points create any subset of $\mathbb{Z}$. It follows that $h : \mathbb{Z} \to \mathbb{Z}$ defined by $h(x) = -x$ is trivially continuous because $h^{-1}(V)$ for any set $V$ of $\mathbb{Z}$ is open by the definition of the discrete topology and the definition of $h$. Define $g : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}$ by $g(x, y) = x + y$. Once again, this is trivially continuous because $g^{-1}(V)$ for any set $V$ of $\mathbb{Z}$ is open by the definition of the discrete topology, product topology, and the definition of $g$. Therefore, $(\mathbb{Z}, +)$ is a topological group. $\blacksquare$
+
+**b)**
+We use the standard topology on $\mathbb{R}$. Since $\mathbb{R}$ is a metric space (and a simply ordered space), it is Hausdorff, which implies it satisfies the $T_1$ axiom. Define the inversion map $h : \mathbb{R} \to \mathbb{R}$ by $h(x) = -x$. This is a simple linear polynomial, and polynomials are everywhere continuous. Define the group operation map $g : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ by $g(x, y) = x + y$. This is a polynomial in two variables, which implies the topological definition of continuity as shown earlier in the book. Therefore, $(\mathbb{R}, +)$ is a topological group. $\blacksquare$
+
+c)
+We use the subspace topology inherited from $\mathbb{R}$. Since $\mathbb{R}$ is Hausdorff, any subspace of a Hausdorff space is also Hausdorff, so $\mathbb{R}_+$ satisfies the $T_1$ axiom. Define the inversion map $h : \mathbb{R}_+ \to \mathbb{R}_+$ by $h(x) = 1/x$. Since $0 \notin \mathbb{R}_+$, this rational function is continuous on its entire domain. Define the group operation map $g : \mathbb{R}_+ \times \mathbb{R}_+ \to \mathbb{R}_+$ by $g(x, y) = x \cdot y$. Since this is simply a polynomial in two variables restricted to the domain $\mathbb{R}_+ \times \mathbb{R}_+$, it is continuous. Therefore, $(\mathbb{R}_+, \cdot)$ is a topological group. $\blacksquare$
+
+**d)**
+Let $S^1$ have the subspace topology inherited from the complex plane $\mathbb{C}$ (which is homeomorphic to $\mathbb{R}^2$). Since $\mathbb{C}$ is a metric space and thus Hausdorff, the subspace $S^1$ is also Hausdorff, satisfying the $T_1$ axiom. Define the inversion map $h : S^1 \to S^1$ by $h(z) = z^{-1}$. Since elements in $S^1$ have a magnitude of 1 ($|z| = 1$), it follows that $z^{-1} = \bar{z}$ (the complex conjugate). Complex conjugation is simply a reflection across the real axis, which is an isometry and therefore continuous. Define the group operation map $g : S^1 \times S^1 \to S^1$ by $g(z_1, z_2) = z_1 \cdot z_2$. Complex multiplication is defined by polynomials combining the real and imaginary components, so it is continuous. Therefore, $(S^1, \cdot)$ is a topological group. $\blacksquare$
+
+**e)**
+We consider $GL(n)$ as a subspace of the Euclidean space $\mathbb{R}^{n^2}$. As a subspace of a metric space, $GL(n)$ is Hausdorff and therefore satisfies the $T_1$ axiom. Define the group operation $g : GL(n) \times GL(n) \to GL(n)$ by $g(A, B) = A \cdot B$. By the definition of matrix multiplication, each entry of the product matrix $A \cdot B$ is a finite sum of products of the entries of $A$ and $B$ (which forms a polynomial). Since polynomials are continuous, $g$ is continuous. Define the inversion map $h : GL(n) \to GL(n)$ by $h(A) = A^{-1}$. By Cramer's Rule, the entries of the inverse matrix $A^{-1}$ are rational functions of the entries of $A$, where the denominator is always $\det(A)$. By the definition of $GL(n)$, $\det(A) \neq 0$, so the denominator is never zero on this subspace. Because rational functions with non-zero denominators are continuous, $h$ is continuous. Therefore, $GL(n)$ is a topological group. $\blacksquare$
+
+### References
+- *Book Title* — Chapter X, Pages Y–146

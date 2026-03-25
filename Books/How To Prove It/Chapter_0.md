@@ -12,9 +12,11 @@
   - Conclusion forced from true premises.
 ### Definitions
 - **Valid Argument**
-  - Conclusion must be true if the premises are true.
+  - Conclusion must be true if the premises are true. 
 
 ### Visual Aids
+**Connective Symbols**
+
 | Symbol  | Meaning           |
 | ------- | ----------------- |
 | $\lor$  | or (disjunction)  |
@@ -40,6 +42,7 @@ Solution Statement.
 ### Definitions
 - **Truth Value**
   - True or false label given to a statement.
+  - Every statement has $n!$ different combinations of truth values assigned to its variables.
 - **Equivalent Formulas**
   - Same truth table, truth value composition.
 - **Tautologies**
@@ -87,17 +90,27 @@ Solution Statement.
 ### Definitions
 - **Variable**
   - Stands for a value.
+  - $P(x)$ notates that P stands for variable x, up to arbitrary variable count.
 - **Truth Sets**
-  - Defines truth for variable dependent statements.
-  - Essentially just a set.
+  - Defines truth for variable dependent statements by set membership.
 - **Set**
-  - Collection of elements.
+  - Collection of objects, called elements.
   - Unordered with no sense of multiplicity.
   - Elementhood test determines which elements reside in a set.
   - Free variables tested in elementhood whereas bound variables describe the set.
+  - Empty set denoted $\emptyset$.
 - **Universe Of Discourse**
   - Set of all possible values for variables.
-  - Empty set denoted $\emptyset$.
+
+### Visual Aids
+**Standard Sets**
+
+| Set Name     | Set Membership   |
+| ------------ | ---------------- |
+| $\mathbb{R}$ | Real numbers     |
+| $\mathbb{Q}$ | Rational numbers |
+| $\mathbb{Z}$ | Integers         |
+| $\mathbb{N}$ | Natural Numbers  |
 
 ### Examples
 **Example Title**
@@ -113,58 +126,82 @@ Solution Statement.
 ## 0.3 Operations On Sets
 ---
 ### Key Concepts
-- **Concept Name**:
-  - Subpoint or clarification.
+- **Operations On Sets**:
+  - $A \cap B$ denotes $\{x | x \in A \land x \in B\}$ (intersection).
+  - $A \cup B$ denotes $\{x | x \in A \lor x \in B\}$ (union).
+  - $A \backslash B$ denotes $\{x | x \in A \land x \not \in B\}$ (difference).
+  - $A \Delta B$ denotes $(A \backslash B) \cup (B \backslash A)$ (symmetric difference).
+
 ### Definitions
-- **Term 1**
-  - Concise explanation of the term.
-### Algorithms
-**Algorithm Name**
-Description.
-```pseudo
-1. Step 1
-2. Step 2
-3. Step 3
-```
-### Code Snippets
-**Snippet Name**
-Description.
-```program
-// code
-```
+- **Subset**
+  - $A \subseteq B$ if every element of A is in B.
+- **Disjoint**
+  - $A \cap B = \emptyset$.
+
 ### Theorems & Proofs
-**Theorem Name**
-Proof.
-### Formulas
-**Formula Name**
-Description.
-$$
-Equation
-$$
+**Set Distributive Laws**
+$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.
+
+**Theorem 1.4.7**
+For any sets A and B, $(A \cup B) \backslash B \subseteq A$.
+
 ### Visual Aids
-| Header | Header |
-| - | - |
-| Content | Content |
-![Diagram]()
+**Venn Diagram**
+![[Screenshot from 2026-03-17 00-25-30.png]]
+
 ### Examples
 **Example Title**
 **Problem:**
 Problem Statement.
 **Solution:**
 Solution Statement.
-### Notable Quotes
-> “Notable quote."
-### Common Pitfalls
-- Pitfall 1.
-### Related Links
-- [Link]()
+
 ### References
-- *Book Title* — Chapter X, Pages Y–Z
+- *Book Title* — Chapter X, Pages Y–45
+  
+## 0.4 The Conditional And Biconditional Connectives
+---
+### Key Concepts
+- **English Expressions For Conditional**:
+  - P implies Q.
+  - Q, if P.
+  - P only if Q.
+  - P is sufficient for Q.
+  - Q is necessary for P.
 
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
+### Definitions
+- **Converse**
+  - $Q \implies P$ is converse to $P \implies Q$.
+- **Contrapositive**
+  - $\neg Q \implies \neg P$ is contrapositive to $P \implies Q$.
+  - Equivalent to conditional.
 
-- [Related Chapter in This Wiki]()  
+### Visual Aids
+**Conditional**
 
-- [Official Specification or Standard Document (PDF/URL)]()  
+| P   | Q   | $P \implies Q$ | $\neg P \lor Q$ |
+| --- | --- | -------------- | --------------- |
+| F   | F   | T              | T               |
+| F   | T   | T              | T               |
+| T   | F   | F              | F               |
+| T   | T   | T              | T               |
 
-- Class Lecture ([Link]())
+**Biconditional**
+
+| P   | Q   | $P \iff Q$ |
+| --- | --- | ---------- |
+| F   | F   | T          |
+| F   | T   | F          |
+| T   | F   | F          |
+| T   | T   | T          |
+
+### Examples
+**Example Title**
+**Problem:**
+Problem Statement.
+**Solution:**
+Solution Statement.
+
+### References
+- *Book Title* — Chapter X, Pages Y–57

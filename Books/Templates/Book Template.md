@@ -3,6 +3,7 @@
 ## Summary
 ---
 > Briefly explain what the chapter is about (2–4 sentences). Focus on the goals, main topics, and why this chapter matters.
+
 ## #.# Subsection Title
 ---
 ### Key Concepts

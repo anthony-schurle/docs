@@ -150,64 +150,149 @@ There are $9! = 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 = 362880$ permutations. Notice
 **Problem 4.4:**
 If $\sigma$ is an odd permutation, explain why $\sigma^2$ is even but $\sigma^{-1}$ is odd.
 **Solution:**
-Suppose $\sigma$ is an odd permutation. Then $sign(\sigma^2) = 
+Suppose $\sigma$ is an odd permutation. Then it takes $2k + 1$ elementary transposes to get to permutation $\sigma$ for some k. It follows that it takes an additional $2k + 1$ elementary transposes to get from $\sigma$ to permutation $\sigma^2$. So, to get to permutation $\sigma^2$ is requires $2(2k + 1)$ elementary transposes which is even. Thus, $\sigma^2$ has the same sign as the original tuple - trivially even because requires 0 transposes - and so is an even permutation. Notice $\sigma^2(\sigma^{-1}) = \sigma$ and so it takes an even number of elementary transposes to reach $\sigma$ from $\sigma^{-1}$ which means both have the same sign. Therefore, since $\sigma$ is odd, $\sigma^{-1}$ is an odd permutation. $\blacksquare$
+
 ### References
 - *Book Title* — Chapter X, Pages Y–89
 
 
 ## 2.4 Cofactor Expansion
 ---
-### Key Concepts
-- **Concept Name**:
-  - Subpoint or clarification.
 ### Definitions
-- **Term 1**
-  - Concise explanation of the term.
-### Algorithms
-**Algorithm Name**
-Description.
-```pseudo
-1. Step 1
-2. Step 2
-3. Step 3
-```
+- **Cofactors**
+  - The numbers $C_{j, k} = (-1)^{j+k}det(A_{j,k})$ in theorem 5.1.
+- **Cofactor Matrix**
+  - $C = \{C_{j,k}\}_{j,k=1}^n$ whose entries are cofactors of given matrix.
 
 ### Theorems & Proofs
 **Theorem 5.1**
 Let A be an $n \times n$ matrix and let $A_{j,k}$ denote the $(n - 1) \times (n - 1)$ matrix obtained from A by crossing out row number j and column number k. For each j, $1 \le j \le n$, determinant of A can be expanded in the row number j as $det(A) = \sum_{k=1}^n a_{j,k}(-1)^{j+k}det(A_{j,k})$. Similarly, for each k, $1 \le k \le n$, the determinant can be expanded in the column number k, $det(A) = \sum_{j=1}^n a_{j,k}(-1)^{j + k}det(A_{j,k})$.
 
-Just need to show this works for rows (j) because of theorem 3.4. When $a_{1,k}$ is the only non-zero term in the first row we easily see that $det A = (-1)^{1 + k}a_{1,k}det(A_{1,k})$.
+Just need to show this works for rows (j) because of theorem 3.4. When $a_{1,k}$ is the only non-zero term in the first row we easily see that $det A = (-1)^{1 + k}a_{1,k}det(A_{1,k})$. But by theorem 3.4, we can just make the first row a sum so that there is only one non-zero row entry per. Then we can just interchange rows to get the first getting us our general formula. $\blacksquare$
+Cool fact: requires $\sum_{k=2}^n \frac{n!}{k!}$ multiplications for $n \times n$ matrix.
 
-### Formulas
-**Formula Name**
-Description.
-$$
-Equation
-$$
-### Visual Aids
-| Header | Header |
-| - | - |
-| Content | Content |
-![Diagram]()
+**Theorem 5.2**
+Let A be an invertible matrix and let C be its cofactor matrix. Then $A^{-1} = \frac{1}{det(A)}C^T$.
+
+Notice $AC^T = det(A)I$. $\blacksquare$
+
+**Corollary 5.3**
+For an invertible matrix A, the entry number k of the solution of the equation $Ax = b$ is given by the formula $x_k = \frac{det(B_k)}{det(A)}$ where the matrix $B_x$ is obtained from A by replacing column number k of A by vector b.
+
 ### Examples
 **Example Title**
-**Problem:**
-Problem Statement.
+**Problem 5.4:**
+Using cofactor formula compute inverses of the matrices,
+$$
+A := \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, B := \begin{pmatrix} 19 & -17 \\ 3 & -2 \end{pmatrix}, D := \begin{pmatrix} 1 & 0 \\ 3 & 5 \end{pmatrix}, E := \begin{pmatrix} 1 & 1 & 0 \\ 2 & 1 & 2 \\ 0 & 1 & 1 \end{pmatrix}
+$$
 **Solution:**
-Solution Statement.
+A)
+$$
+C_{1,1} = (1)(4) = 4, C_{1,2} = (-1)(3) = -3, C_{2,1} = (-1)(2) = -2, C_{2,2} = (1)(1) = 1
+$$
+so that,
+$$
+C = \begin{pmatrix} 4 & -3 \\ -2 & 1 \end{pmatrix} \implies C^T = \begin{pmatrix} 4 & -2 \\ -3 & 1 \end{pmatrix}
+$$
+It follows that,
+$$
+det(A) = \sum_{k = 1}^2 a_{1, k}C_{1, k} = 4 - 6 = -2
+$$
+Finally,
+$$
+A^{-1} = \frac{1}{det(A)}C^T = \begin{pmatrix} -2 & 1 \\ 1.5 & -0.5 \end{pmatrix}
+$$
+
+B)
+$$
+C_{1,1} = (1)(-2) = -2, C_{1,2} = (-1)(3) = -3, C_{2,1} = (-1)(-17) = 17, C_{2,2} = (1)(19) = 19
+$$
+so that,
+$$
+C = \begin{pmatrix} -2 & -3 \\ 17 & 19 \end{pmatrix} \implies C^T = \begin{pmatrix} -2 & 17 \\ -3 & 19 \end{pmatrix}
+$$
+It follows that,
+$$
+det(B) = \sum_{k = 1}^2 b_{1, k}C_{1, k} = -38 + 51 = 13
+$$
+Finally,
+$$
+B^{-1} = \frac{1}{det(B)}C^T = \begin{pmatrix} \frac{-2}{13} & \frac{-17}{13} \\ \frac{-3}{13} & \frac{19}{13} \end{pmatrix}
+$$
+
+D)
+$$
+C_{1,1} = (1)(5) = 5, C_{1,2} = (-1)(3) = -3, C_{2,1} = (-1)(0) = 0, C_{2,2} = (1)(1) = 1
+$$
+so that,
+$$
+C = \begin{pmatrix} 5 & -3 \\ 0 & 1 \end{pmatrix} \implies C^T = \begin{pmatrix} 5 & 0 \\ -3 & 1 \end{pmatrix}
+$$
+It follows that,
+$$
+det(D) = \sum_{k = 1}^2 d_{1, k}C_{1, k} = 5
+$$
+Finally,
+$$
+D^{-1} = \frac{1}{det(D)}C^T = \begin{pmatrix} 1 & 0 \\ \frac{-3}{5} & \frac{1}{5} \end{pmatrix}
+$$
+
+E)
+$$
+C_{1,1} = (1)(1 - 2) = -1, C_{1,2} = (-1)(2 - 0) = -2, C_{1, 3} = (1)(2 - 0) = 2
+$$
+$$
+C_{2,1} = (-1)(1 - 0) = -1, C_{2,2} = (1)(1 - 0) = 1, C_{2, 3} = (-1)(1 - 0) = -1
+$$
+$$
+C_{3, 1} = (1)(2 - 0) = 2, C_{3, 2} = (-1)(2 - 0) = -2, C_{3, 3} = (1)(1 - 2) = -1
+$$
+so that,
+$$
+C = \begin{pmatrix} -1 & -2 & 2 \\ -1 & 1 & -1 \\ 2 & -2 & -1 \end{pmatrix} \implies C^T = \begin{pmatrix} -1 & -1 & 2 \\ -2 & 1 & -2 \\ 2 & -1 & -1 \end{pmatrix}
+$$
+It follows that,
+$$
+det(E) = \sum_{k = 1}^3 e_{1, k}C_{1, k} = -1 - 2 = -3
+$$
+Finally,
+$$
+E^{-1} = \frac{1}{det(E)}C^T = \begin{pmatrix} \frac{1}{3} & \frac{1}{3} & \frac{-2}{3} \\ \frac{2}{3} & \frac{-1}{3} & \frac{2}{3} \\ \frac{-2}{3} & \frac{1}{3} & \frac{1}{3} \end{pmatrix}
+$$
+$\blacksquare$
+
+**Problem 5.6:**
+Vandermonde determinant revisited. Our goal is to prove the formula,
+$$
+\begin{vmatrix} 1 & c_0 & c_0^2 & ... & c_0^n \\ 1 & c_1 & c_1^2 & ... & c_1^n \\ ... & ... & ... & ... & ... \\ 1 & c_n & c_n^2 & ... & c_n^n \end{vmatrix} = \prod_{0 \le j < k \le n} (c_k - c_j)
+$$
+for the $(n + 1) \times (n + 1)$ Vandermonde determinant.
+**Solution**
+We will apply induction. We see that $\begin{vmatrix} 1 & c_0 \\ 1 & c_1 \end{vmatrix} = (1)(1)(c_1) + (c_0)(-1)(1) = c_1 - c_0$ and $\prod_{0 \le j < k \le 1} (c_k - c_j) = c_1 - c_0$ and so the formula holds for $n = 1$. We also see that $\begin{vmatrix} 1 & c_0 & c_0^2 \\ 1 & c_1 & c_1^2 \\ 1 & c_2 & c_2^2 \end{vmatrix} = (1)(1)(\begin{vmatrix} c_1 & c_1^2 \\ c_2 & c_2^2 \end{vmatrix} + (c_0)(-1)(\begin{vmatrix} 1 & c_1^2 \\ 1 & c_2^2 \end{vmatrix} + (c_0^2)(1)(\begin{vmatrix} 1 & c_1 \\ 1 & c_2 \end{vmatrix} = c_0c_1^2 - c_0c_2^2 - c_0^2c_1 + c_0^2c_2 + c_1c_2^2 - c_1^2c_2$ and $\prod_{0 \le j < k \le 2} (c_k - c_j) = (c_2 - c_1)(c_2 - c_0)(c_1 - c_0) = c_0c_1^2 - c_0c_2^2 - c_0^2c_1 + c_0^2c_2 + c_1c_2^2 - c_1^2c_2$ and so the formula holds for $n = 2$.
+
 ### Notable Quotes
-> “Notable quote."
-### Common Pitfalls
-- Pitfall 1.
-### Related Links
-- [Link]()
+> “Very often the cofactor expansion formula is used as the definition of determinant."
+
 ### References
-- *Book Title* — Chapter X, Pages Y–Z
+- *Book Title* — Chapter X, Pages Y–95
 
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
 
-- [Related Chapter in This Wiki]()  
+## 2.5 Minors And Rank
+---
+### Definitions
+- **Minor**
+  - Minor of order k of matrix A is the determinant of its $k \times k$ submatrix.
+  - Matrix A has $\begin{pmatrix} m \\ k \end{pmatrix} \cdot \begin{pmatrix} n \\ k \end{pmatrix}$ different $k \times k$ submatrices.
 
-- [Official Specification or Standard Document (PDF/URL)]()  
+### Theorems & Proofs
+**Theorem 6.1**
+For a non-zero matrix A its rank equals to the maximal integer k such that there exists a non-zero minor of order k.
 
-- Class Lecture ([Link]())
+**Corollary 6.2**
+Let $A = A(x)$ be an $m \times n$ polynomial matrix. Then rank $A(x)$ is a constant everywhere, except maybe finitely many points, where the rank is smaller.
+
+Consider maximum rank of A(x) and some particular minor of order - its a polynomial matrix. $\blacksquare$
+
+### References
+- *Book Title* — Chapter X, Pages Y–97
