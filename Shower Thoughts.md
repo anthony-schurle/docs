@@ -1,0 +1,1 @@
+Observation: Given enough time, there would have been enough time.

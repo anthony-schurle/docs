@@ -30,17 +30,60 @@ The image of a connected space under a continuous map is connected.
 **Theorem 23.6**
 A finite cartesian product of connected spaces is connected.
 
-### Examples
-**Example Title**
-**Problem 1:**
-Let $\Gamma$ and $\Gamma '$ be two topologies on X. If $\Gamma \subseteq \Gamma '$, what does connectedness of X in one topology imply about connectedness in the other?
-**Solution:**
-We show that connectedness in $\Gamma '$ implies connectedness in $\Gamma$. Suppose X is not connected in $\Gamma$, such there there are two disjoint, open sets U and V where $X = U \cup V$. Since $\Gamma \subseteq \Gamma '$, U and V are also disjoint, open sets of $\Gamma '$ whose union is X. By definition, X is connected under $\Gamma '$. We not show that connectedness in $\Gamma$ does not imply connectedness in $\Gamma'$ with a counterexample. Let $X = \{a,b\}$ and define $\Gamma$ to be the indiscrete topology while $\Gamma '$ is the discrete topology. $\Gamma$ is connected by construction and X is separated by $\{a\}, \{b\}$ in $\Gamma '$ so that $\Gamma '$ is not connected. $\blacksquare$
-
-**Problem 2:**
-Let $\{A_n\}$ be a sequence of connected subspaces of X, such that $A_n \cap A_{n+1} \ne \emptyset$ for all n. Show that $\bigcup A_n$ is connected.
-**Solution:**
-We show by induction for the finite case that $U_k = \bigcup_{n=1}^k A_n$ is connected for all k. $U_1 = A_1$ is trivially connected. Now suppose $U_k$ is connected and consider $U_{k+1} = U_k \cup A_{k+1}$. By assumption, $A_k \cap A_{k+1} \ne \emptyset$ and since $A_k \subseteq U_k$, it follows that $U_k \cap A_{k+1} \ne \emptyset$. By Theorem 23.3, $U_{k+1}$ must be connected. Therefore, $U_k$ is connected for all k. Notice that $A_1 \subseteq U_1 \subseteq U_2 \subseteq ...$ and so all $U_k$ share a point in common. Thus, by theorem 23.3, the union of all $U_k$ for all k is connected. $\blacksquare$
-
 ### References
 - *Book Title* — Chapter X, Pages Y–152
+
+
+## 1.1 Connected Subspaces Of The Real Line
+---
+### Definitions
+- **Linear Continuum**
+  - Simply ordered set L having more than one element where the following hold:
+  - L has the least upper bound property.
+  - If $x < y$, there exists z such that $x < z < y$.
+- **Path**
+  - Given $x,y \in X$, a path in X from x to y is a continuous map $f ; [a, b] \to X$ of some closed interval in the real into X, such that $f(a) = x$ and $f(b) = y$.
+- **Path Connected**
+  - Every pair of points of X can be joined by a path in X.
+  - Space is then connected, trivially shown.
+  - Examples: unit ball, punctured euclidean space when $n > 1$, unit sphere when $n > 1$.
+
+### Theorems & Proofs
+**Theorem 24.1**
+If L is a linear continuum in the order topology, then L is connected, and so are the intervals and rays in L.
+
+Use contradiction and the upper bound on one of the separators for a convex subspace.
+
+**Corollary 24.2**
+The real line is connected and so are the intervals and rays in it.
+
+**Theorem 24.3**
+Let $f: X \to Y$ be a continuous map, where X is a connected space and Y is an ordered set in the order topology. If a and b are two points of X and if r is a point of Y lying between $f(a)$ and $f(b)$, then there exists a point c of X such that $f(c) = r$.
+
+### References
+- *Book Title* — Chapter X, Pages Y–159
+
+
+## 1.2 Components And Local Connectedness
+---
+### Key Concepts
+- **Concept Name**:
+  - Subpoint or clarification.
+### Definitions
+- **Components**
+  - Equivalence classes of X where x ~ y if there is a connected subspace of X containing both x and y.
+  - Symmetric, reflexive, and transitive.
+  - Closed and (if finite components) open.
+- **Path Components**
+  - Equivalence classes of X where x ~ y if there is a path in X from x to y.
+  - Equivalence relation.
+
+### Theorems & Proofs
+**Theorem 25.1**
+The components of X are connected disjoint subspaces of X whose union is X, such that each nonempty connected subspace of X intersects only one of them.
+
+**Theorem 25.2**
+The path components of X are path-connected disjoint subspaces of X whose union is X, such that each nonempty path-connected subspace of X intersects only one of them.
+
+### References
+- *Book Title* — Chapter X, Pages Y–
