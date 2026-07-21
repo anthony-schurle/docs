@@ -76,75 +76,91 @@ a) R is reflexive iff $i_A \subseteq R$, where $i_A$ is the identity relation on
 b) R is symmetric iff $R = R^{-1}$.
 c) R is transitive iff $R \circ R \subseteq R$.
 
-### Examples
-**Example Title**
-**Problem 1:**
-Problem Statement.
-**Solution:**
-Solution Statement.
-
 ### References
 - *Book Title* — Chapter X, Pages Y–200
 
 
 ## 3.3 Ordering Relations
 ---
-### Key Concepts
-- **Concept Name**:
-  - Subpoint or clarification.
 ### Definitions
 - **Antisymmetric**
   - Suppose R is a relation on a set A. Then R is antisymmetric if $\forall x \in A \forall y \in A ((xRy \land yRx) \implies x = y)$.
 - **Order**
   - Suppose R is a relation on a set A. R is a partial order on A if it is reflexive, transitive, and antisymmetric.
   - R is a total order on A if it is a partial order and $\forall x \in A \forall y \in A (xRy \lor yRx)$.
-### Algorithms
-**Algorithm Name**
-Description.
-```pseudo
-1. Step 1
-2. Step 2
-3. Step 3
-```
-### Code Snippets
-**Snippet Name**
-Description.
-```program
-// code
-```
+  - Sometimes symbols used instead of letters to identity the relation, such as $\ge$.
+- **R-Smallest**
+  - Suppose R is a partial order on set A, $B \subseteq A$, and $b \in B$. b is called R-smallest element of B if $\forall x \in B (bRx)$.
+  - When comparing smallest subsets with a desired property, it is implicit this is the smallest with relation $\{(X, Y) \in \mathcal{P}(A) \times \mathcal{P}(A) | X \subseteq Y\}$.
+- **R-Minimal**
+  - Suppose R is a partial order on set A, $B \subseteq A$, and $b \in B$. Then b is called R-minimal if $\neg \exists x \in B (xRb \land x \ne b)$.
+- **R-Largest**
+  - Suppose R is a partial order on A, $B \subseteq A$, and $b \in B$. b is called R-largest of B if $\forall x \in B (xRb)$.
+- **R-Maximal**
+  - Suppose R is a partial order on A, $B \subseteq A$, and $b \in B$. b is called R-maximal of B if $\neg \exists x \in B (bRx \land b \ne x)$.
+- **Bounds**
+  - Suppose R is a partial order on A, $B \subseteq A$, and $a \in A$.
+  - a is called a lower bound for B if $\forall x \in B (aRx)$.
+  - a is called an upper bound for B if $\forall x \in B (xRa)$.
+- **Least Upper Bound (l.u.b.)**
+  - Suppose R is a partial order on A and $B \subseteq A$. Let U be the set of all upper bounds for B.
+  - If U has a smallest element, then this element is called the least upper bound on B.
+- **Greatest Lower Bound (g.l.b.)**
+  - Suppose R is a partial order on A and $B \subseteq A$. Let L be the set of all lower bounds.
+  - If L has a largest element, it is called the greatest lower bound on B.
+
 ### Theorems & Proofs
-**Theorem Name**
-Proof.
-### Formulas
-**Formula Name**
-Description.
-$$
-Equation
-$$
-### Visual Aids
-| Header | Header |
-| - | - |
-| Content | Content |
-![Diagram]()
-### Examples
-**Example Title**
-**Problem:**
-Problem Statement.
-**Solution:**
-Solution Statement.
-### Notable Quotes
-> “Notable quote."
-### Common Pitfalls
-- Pitfall 1.
-### Related Links
-- [Link]()
+**Theorem 4.4.6**
+Suppose R is a partial order on a set A, and $B \subseteq A$.
+a) If B has a smallest element, then this smallest element is unique.
+b) Suppose b is the smallest element of B. Then b is also a minimal element of B, and it is the only minimal element.
+c) If R is a total order and b is a minimal element of B, then b is the smallest element of B.
+
+**Theorem 4.4.11**
+Suppose A is a set, $F \subseteq \mathcal{P}(A)$, and $F \ne \emptyset$. Then the least upper bound of F (in the subset partial order) is $\bigcup F$ and the greatest lower bound of F is $\bigcap F$.
+
 ### References
-- *Book Title* — Chapter X, Pages Y–Z
+- *Book Title* — Chapter X, Pages Y–215
 
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
 
-- [Related Chapter in This Wiki]()  
+## 3.4 Equivalence Relations
+---
+### Definitions
+- **Equivalence Relation**
+  - Suppose R is a relation on a set A. R is an equivalence relation if it is reflexive, symmetric, and transitive.
+- **Pairwise Disjoint**
+  - F is pairwise disjoint if $\forall X \in F \forall Y \in F (X \ne Y \implies X \cap Y = \emptyset)$. 
+- **Partition**
+  - Suppose A is a set and $F \subseteq \mathcal{P}(A)$. F is a partition of A if:
+  - $\bigcup F = A$.
+  - F is pairwise disjoint.
+  - $\forall X \in F (X \ne \emptyset)$.
+- **Equivalence Class**
+  - Suppose R is an equivalence relation on a set A, and $x \in A$. The equivalence class of x with respect to R is $[x]_R = \{y \in A | yRx\}$.
+  - A modulo R denoted $A / R = \{[x]_R | x \in A\}$.
+- **Congruent**
+  - Suppose m is a positive integers. For any integers x and y, x is congruent to y modulo m if $m | (x - y)$. Denoted $x \equiv y \mod m$.
 
-- [Official Specification or Standard Document (PDF/URL)]()  
+### Theorems & Proofs
+**Theorem 4.5.4**
+Suppose R is an equivalence relation on a set A. Then $A / R$ is a partition of A.
 
-- Class Lecture ([Link]())
+**Lemma 4.5.5**
+Suppose R is an equivalence relation on A. Then:
+1. $\forall x \in A (x \in [x])$.
+2. $\forall x \in A \forall y \in A (y \in [x] \iff [y] = [x])$.
+
+**Theorem 4.5.6**
+Suppose A is a set and F is a partition of A. Then there is an equivalence relation R on A such that $A / R = F$.
+
+**Lemma 4.5.7**
+Suppose A is a set and F is a partition of A. Let $R = \bigcup_{X \in F}(X \times X)$. Then R is an equivalence relation on A. We call R the equivalence relation determined by F.
+
+**Lemma 4.5.8**
+Suppose A is a set and F is a partition of A. Let R be the equivalence relation determined by F. Suppose $X \in F$ and $x \in X$. Then $[x]_R = X$.
+
+**Theorem 4.5.10**
+For every positive integer $m$, $\equiv_m$ is an equivalence relation on $\mathbb{Z}$.
+
+### References
+- *Book Title* — Chapter X, Pages Y–228

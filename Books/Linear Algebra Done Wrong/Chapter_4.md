@@ -68,13 +68,6 @@ For any vectors u, v $||u + v||^2 + ||u - v||^2 = 2(||u||^2 + ||v||^2)$.
 **Theorem 1.11**
 A norm in a normed space is obtained from some inner product iff it satisfies Lemma 1.10.
 
-### Examples
-**Example Title**
-**Problem 1.6:**
-Prove that $|(x, y)| = ||x|| \cdot ||y||$ iff one of the vectors is a multiple of the other.
-**Solution:**
-($\implies$) Suppose $|(x, y)| = ||x|| \cdot ||y||$. ($\Longleftarrow$) Suppose one of the vectors is a multiple of the other, WLOG $x = ky$ for some $k \in \mathbb{N}$. 
-
 ### References
 - *Book Title* — Chapter X, Pages Y–125
 
@@ -87,7 +80,7 @@ Prove that $|(x, y)| = ||x|| \cdot ||y||$ iff one of the vectors is a multiple o
   - $||u + v||^2 = ||u||^2 + ||v||^2$.
   - Vector v is orthogonal to a subspace E if v is orthogonal to all vectors w in E.
   - Subspaces E and F are orthogonal if all vectors in E are orthogonal to F.
-  - A system of vectors if orthogonal if any two vectors are orthogonal to each other.
+  - A system of vectors is orthogonal if any two vectors are orthogonal to each other.
   - Any system that is orthogonal and a basis is called an orthogonal basis.
   - In an orthogonal basis, coordinates determined by $\alpha_k = \frac{(x, v_k)}{||v_k||^2}$ for vector x.
 - **Orthonormal**
@@ -103,29 +96,6 @@ Let $v_1, v_2, ..., v_n$ be an orthogonal system. Then $||\sum_{k=1}^n\alpha_k v
 
 **Corollary 2.6**
 Any orthogonal system $v_1, v_2, ..., v_n$ of non-zero vectors is linearly independent.
-
-### Examples
-**Example Title**
-**Problem 2.4:**
-Let V be a vector space and let $v_1, v_2, ..., v_n$ be a basis in V. For $x = \sum_{k=1}^n \alpha_k v_k, y = \sum_{k=1}^n \beta_k v_k$ define $<x,y> := \sum_{k=1}^n \alpha_k \overline{\beta_k}$. Prove that $<x, y>$ defines an inner product in V.
-**Solution:**
-We will show that $<x, y>$ satisfies all properties of an inner product space. Let $x = \sum_{k=1}^n \alpha_k v_k, y = \sum_{k=1}^n \beta_k v_k, z = \sum_{k=1}^n \pi_k v_k$.
-Conjugate symmetry -
-$<x, y> = \sum_{k=1}^n \alpha_k \overline{\beta_k} = \overline{\sum_{k=1}^n \overline{\alpha_k} \beta_k} = \overline{<y, x>}$.
-Linearity -
-$$
-<wx + vy, z> = <\sum_{k=1}^n (w \alpha_k + v \beta_k)v_k, z> = \sum_{k=1}^n (w \alpha_k + v \beta_k) \overline{\pi_k} = \sum_{k=1}^n w \alpha_k \overline{\pi_k} + \sum_{k=1}^n v \beta_k \overline{\pi_k}
-$$
-$$
-= w \sum_{k=1}^n \alpha_k \overline{\pi_k} + v \sum_{k=1}^n \beta_k \overline{\pi_k} = w <x, z> + v <y, z>
-$$
-
-Non-negativity -
-$<x, x> = \sum_{k=1}^n \alpha_k \overline{\alpha_k} = \sum_{k=1}^n |\alpha_k|^2$. Since $|\alpha_k|^2 \ge 0$ for all k, $<x, x> \ge 0$.
-
-Non-degeneracy -
-Suppose $<x, x> = \sum_{k=1}^n |\alpha_k|^2 = 0$. Since $|\alpha_k|^2 \ge 0$ for all k, it must be that $|\alpha_k|^2 = 0$. But this is true precisely when $\alpha_k = 0$ and so $x = 0$. Suppose $x = 0$. Because $v_1, v_2, ..., v_n$ is a basis, and so linearly independent, $x = 0$ only when $\alpha_k = 0$ for all k. Therefore, $<x, x> = \sum_{k=1}^n \alpha_k \overline{\alpha_k} = 0$. $\blacksquare$
-
 
 ### References
 - *Book Title* — Chapter X, Pages Y–129
@@ -164,30 +134,6 @@ $v = v_1 + v_2$ where $v_1 \in E$ and $v_2 \in E^\perp$ for any vector v in a in
 **Proposition 3.6**
 For a subspace E $(E^{\perp})^\perp = E$.
 
-### Examples
-**Example Title**
-**Problem 3.7:**
-True or false: if E is a subspace of V, then $dimE + dim(E^\perp) = dim V$? Justify.
-**Solution:**
-True. Suppose E is a subspace of V. Let $dim E = n$ and $dim(E^\perp) = m$. Since $V = E \oplus E^\perp$, by Theorem 2.6 a basis in V is precisely the union of the basis elements in both $E$ and $E^\perp$. Therefore, $dim V = dim E + dim(E^\perp)$ since $E \cap E^\perp = \{0\}$. $\blacksquare$
-
-**Problem 3.8**
-Let P be the orthogonal projection onto a subspace E of an inner product space V, $dim V = n$, $dim E = r$. Find the eigenvalues and the eigenvectors (eigenspaces). Find the algebraic and geometric multiplicities of each eigenvalue.
-**Solution:**
-
-
-**Problem 3.10**
-Let an inner product on the space of polynomials be defined by $(f, g) = \int_{-1}^1 f(t) \overline{g(t)}dt$. Apply Gram-Schmidt to the system $1, t, t^2, t^3$.
-**Solution:**
-First we set $v_1 = 1$. Then $v_2 = t - \frac{(t, 1)}{||1||^2}(1) = t$ since $(t, 1) = \int_{-1}^1 tdt = 0$. Next, $v_3 = t^2 - (\frac{(t^2, 1)}{||1||^2}(1) + \frac{(t^2, t)}{||t||^2}t)$. We see that $(t^2, 1) = \int_{-1}^1 t^2 dt = \frac{2}{3}$ and $(1, 1) = \int_{-1}^1 dt = 2$ so $||1||^2 = 2$. We also see that $(t^2, t) = \int_{-1}^1 t^3 dt = 0$. It follows that $v_3 = t^2 - \frac{1}{3}$. Next $v_4 = t^3 - (\frac{(t^3, 1)}{||1||^2}(1) + \frac{(t^3, t)}{||t||^2} + \frac{(t^3, t^2)}{||t^2||^2})$. We see that $(t^3, 1) = \int_{-1}^1 t^3 dt = 0$. Then $(t^3, t) = \int_{-1}^1 t^4 dt = \frac{2}{5}$ and $(t, t) = \int_{-1}^1 t^2 dt = \frac{2}{3}$ so $||t||^2 = \frac{2}{3}$. Then $(t^3, t^2) = \int_{-1}^1 t^5 dt = 0$. Therefore, $v_4 = t^3 - \frac{2}{5} \frac{3}{2} = t^3 - \frac{3}{5}$. Thus, the Gram-Schmidt algorithm provides $1, t, t^2 - \frac{1}{3}, t^3 - \frac{3}{5}$. $\blacksquare$
-
-**Problem 3.11**
-Let $P = P_E$ be the matrix of an orthogonal projection onto a subspace E. Show that,
-a) The matrix P is self-adjoint, $P* = P$.
-b) $P^2 = P$.
-**Solution:**
-Let v be arbitrary. We see that $Pv = \sum_{k=1}^r \frac{(v, v_k)}{||v_k||^2}v_k$. We also see that $P*v = 
-
 ### References
 - *Book Title* — Chapter X, Pages Y–135
 
@@ -205,24 +151,7 @@ Let v be arbitrary. We see that $Pv = \sum_{k=1}^r \frac{(v, v_k)}{||v_k||^2}v_k
 
 ### Theorems & Proofs
 **Theorem 4.1**
-For ab $m \times n$ matrix A $Ker A = Ker(A*A)$.
-
-### Examples
-**Example Title**
-**Problem 4.5:**
-Let an equation $Ax = b$ have a solution, and let A have non-trivial kernel. Prove that
-a) There exist a unique solution $x_0$ of $Ax = b$ minimizing the norm $||x||$.
-b) $x_0 = P_{(Ker A)^\perp}x$ for any x satisfying $Ax = b$.
-**Solution:**
-a)
-Suppose $Ax_0 = b$ where $||x_0|| \le ||x||$ for all x satisfying $Ax = b$ and suppose $Ax_1 = b$ where $||x_1|| \le ||x||$ for all x satisfying $Ax = b$. Since $Ax_1 = b$ and $||x_0|| \le ||x||$ for all x satisfying $Ax = b$, we must have $||x_0|| \le ||x_1||$. Since $Ax_0 = b$ and $||x_1|| \le ||x||$ for all x satisfying $Ax = b$, we must have $||x_1|| \le ||x_0||$. Therefore, because $||x_0|| \le ||x_1||$ and $||x_1|| \le ||x_0||$, it must be that $||x_0|| = ||x_1||$. 
-
-**Problem 4.6:**
-Applying the preivous problem to $Ax = P_{Ran A}b$ show that
-a) There exists a unique least square solution $x_0$ of $Ax = b$ minimizing the norm $||x||$.
-b) $x_0 = P_{(Ker A)^\perp}x$ for any least square solution x of $Ax = b$.
-**Solution:**
-
+For an $m \times n$ matrix A $Ker A = Ker(A*A)$.
 
 ### References
 - *Book Title* — Chapter X, Pages Y–142
@@ -255,18 +184,6 @@ a) $Ker A* = (Ran A)^\perp$.
 b) $Ker A = (Ran A*)^\perp$.
 c) $Ran A = (Ker A*)^\perp$.
 d) $Ran A* = (Ker A)^\perp$.
-
-### Examples
-**Example Title**
-**Problem 5.3:**
-Let A be an $m \times n$ matrix. Show that $Ker A = Ker(A*A)$.
-**Solution:**
-Suppose $x \in Ker A$. By definition, $Ax = 0$ then. We see that $A*Ax = A*(0) = 0$ and so $x \in Ker(A*A)$. Therefore, $Ker A \subseteq Ker(A*A)$. Suppose $y \in Ker(A*A)$. By definition, $A*Ay = 0$. Notice $||Ay||^2 = (Ay, Ay) = (A*Ay, y) = (0, y) = 0$ and so $||Ay||^2 = 0$. It follows that since $||Ay|| \ge 0$ and $||Ay||^2 = 0$, it must be that $||Ay|| = 0$. This is true precisely when $Ay = 0$ and so $y \in Ker A$. Therefore, $Ker(A*A) \subseteq Ker A$. Because $Ker A \subseteq Ker(A*A)$ and $Ker(A*A) \subseteq Ker A$, we have $Ker A = Ker(A*A)$. $\blacksquare$
-
-**Problem 5.6**
-Let a matrix P be self-adjoint ($P* = P$) and let $P^2 = P$. Show that P is the matrix of an orthogonal projection. 
-**Solution:**
-
 
 ### References
 - *Book Title* — Chapter X, Pages Y–146
@@ -357,12 +274,7 @@ Description.
 2. Step 2
 3. Step 3
 ```
-### Code Snippets
-**Snippet Name**
-Description.
-```program
-// code
-```
+
 ### Theorems & Proofs
 **Theorem Name**
 Proof.
@@ -377,12 +289,7 @@ $$
 | - | - |
 | Content | Content |
 ![Diagram]()
-### Examples
-**Example Title**
-**Problem:**
-Problem Statement.
-**Solution:**
-Solution Statement.
+
 ### Notable Quotes
 > “Notable quote."
 ### Common Pitfalls
@@ -391,11 +298,3 @@ Solution Statement.
 - [Link]()
 ### References
 - *Book Title* — Chapter X, Pages Y–Z
-
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
-
-- [Related Chapter in This Wiki]()  
-
-- [Official Specification or Standard Document (PDF/URL)]()  
-
-- Class Lecture ([Link]())

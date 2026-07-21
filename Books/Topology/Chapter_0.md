@@ -130,7 +130,7 @@ Because the open rays are open in the order topology, the topology they generate
 - **Product Topology**
   - The topology on $X \times Y$ has basis collection of all sets of the form $U \times V$, where U is an open subset of X and V is an open subset of Y.
 - **Projections**
-  - Let $\pi_1 : X \times Y \to X$ be defined by $\pi_1(x, y) = x$ and let $\pi_1 : X \times Y \to Y$ be defined by $\pi_2(x, y) = y$.
+  - Let $\pi_1 : X \times Y \to X$ be defined by $\pi_1(x, y) = x$ and let $\pi_2 : X \times Y \to Y$ be defined by $\pi_2(x, y) = y$.
   - These are projections of $X \times Y$ into its first and second factors.
 
 ### Theorems & Proofs
@@ -216,6 +216,8 @@ Consider the ray $(a, \infty)$ in X. If $a \in Y$, then $(a, \infty) \cap Y = \{
   - $x_n \to x$.
 - **Hausdorff Space**
   - Topological space X where each pair $x_1, x_2$ of distinct points of X, there is a neighborhood $U_1$ and $U_2$ of $x_1$ and $x_2$ respectively that are disjoint.
+- **Boundary**
+  - $Bd(A) = \overline{A} \cap \overline{X - A}$ for set A of space X.
 
 ### Theorems & Proofs
 **Theorem 17.1**
@@ -434,56 +436,13 @@ Let $\overline{d}(a, b) = min\{|a - b|, 1\}$ be the standard bounded metric on $
 ### Definitions
 - **Term 1**
   - Concise explanation of the term.
-### Algorithms
-**Algorithm Name**
-Description.
-```pseudo
-1. Step 1
-2. Step 2
-3. Step 3
-```
-### Code Snippets
-**Snippet Name**
-Description.
-```program
-// code
-```
+
 ### Theorems & Proofs
 **Theorem Name**
 Proof.
-### Formulas
-**Formula Name**
-Description.
-$$
-Equation
-$$
-### Visual Aids
-| Header | Header |
-| - | - |
-| Content | Content |
-![Diagram]()
-### Examples
-**Example Title**
-**Problem:**
-Problem Statement.
-**Solution:**
-Solution Statement.
-### Notable Quotes
-> “Notable quote."
-### Common Pitfalls
-- Pitfall 1.
-### Related Links
-- [Link]()
+
 ### References
 - *Book Title* — Chapter X, Pages Y–136
-
-- [Author(s), "Paper or Article Title," Journal or Conference Name, Year]() 
-
-- [Related Chapter in This Wiki]()  
-
-- [Official Specification or Standard Document (PDF/URL)]()  
-
-- Class Lecture ([Link]())
 
 
 ## 0.10 The Quotient Topology
@@ -502,6 +461,8 @@ Solution Statement.
   - If X is a space and A is a set with the surjective map $p : X \to A$, then the quotient topology is defined by subsets U of A iff $p^{-1}(U)$ open in X making p a quotient map.
 - **Quotient Space\Identification Space**
   - Let X be a topological space and $X*$ a partition of X into disjoint subsets whose union is X. Let $p: X \to X*$ be a surjective map carrying each point of X to the element in X* containing it, $X*$ is the quotient space of X then induced by p.
+- **Topological Group**
+  - A group that is also a topological space satisfying the $T_1$ axiom, such that the map of $G \times G$ into G sending $x \times y$ into $x \cdot y$, and the map of G into G sending x into $x^{-1}$ are continuous maps.
 
 ### Theorems & Proofs
 **Theorem 22.1**
@@ -524,69 +485,6 @@ b) If Z is Hausdorff, so is $X*$.
 ### Visual Aids
 ![[Screenshot from 2026-03-05 23-57-02.png]]
 
-### Examples
-**Example Title**
-**Problem 2:**
-a)
-Let $p : X \to Y$ be a continuous map. Show that if there is a continuous map $f: Y \to X$ such that $p \circ f$ equals the identity map of Y, then p is a quotient map.
-b)
-If $A \subseteq X$, a retraction of X onto A is a continuous map $r : X \to A$ such that $r(a) = a$ for each $a \in A$. Show that a retraction is a quotient map.
-**Solution:**
-a)
-Suppose $p^{-1}(V)$ is open in X. Since f is continuous, we see that $f^{-1}(p^{-1}(V))$ must be open in Y. But this is equivalent to $(p \circ f)^{-1}(V)$ open in Y and since $p \circ f$ is just the identity map of Y, $(p \circ f)^{-1}(V) = V$. Therefore, V open in Y. Now consider arbitrary $y \in Y$. Define $x = f(y)$. We see that $p(f(y)) = y$ by assumption and so p is surjective since y was arbitrary. $\blacksquare$
-
-b)
-Consider arbitrary $a \in A$. We see that $r(a) = a$ and since a was arbitrary, r is surjective. Consider arbitrary open set $r^{-1}(V)$ of X where V is a subset of A. By definition of the subspace topology, $r^{-1}(V) \cap A$ is open in A. By the definition of r, $r^{-1}(V) \cap A = V$ and so V is open in A. But $r^{-1}(V)$ was arbitrary, and so r is a quotient map. $\blacksquare$
-
-**Problem 3:**
-Let $\pi_1 : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ be projection on the first coordinate. Let A be the subspace of $\mathbb{R} \times \mathbb{R}$ consisting of all points $x \times y$ for which either $x \ge 0$ or $y = 0$ (or both); let $q : A \to \mathbb{R}$ be obtained by restricting $\pi_1$. We can show that q is a quotient map that is neither open nor closed.
-**Solution:**
-First we show q is a quotient map. Consider arbitrary $x \in \mathbb{R}$ and define $(x, 0) \in A$. Then $q(x, 0) = x$ and so q is surjective because x was arbitrary. We now show continuity. Consider arbitrary open basis element $(a, b)$ of $\mathbb{R}$. Case 1: $a \ge 0$. Then $q^{-1}(a, b) = (a, b) \times \mathbb{R} = A \cap (a, b) \times \mathbb{R}$ which is open in A because $(a, b), \mathbb{R}$ both open in $\mathbb{R}$. Case 2: $a < 0$. Sub-Case 1: $0 \not \in (a, b)$. Then $q^{-1}(a, b) = (a, b) \times 0 = A \cap (a, b) \times \mathbb{R}$ which is open because both $(a, b), \mathbb{R}$ open in $\mathbb{R}$. Sub-Case 2: $0 \in (a, b)$. Then $q^{-1}(a,b) = [(a, 0) \times 0] \cup [[0, b) \times \mathbb{R}]$. Continuing, $q^{-1}(a,b) = [A \cap (a, 0) \times \mathbb{R}] \cup [A \cap (-1, b) \times (\mathbb{R} - \{0\})]$. But $(a, 0), (-1, b), \mathbb{R}, (\mathbb{R} - \{0\} = (-\infty, 0) \cup (0, \infty))$ all open in $\mathbb{R}$ so $q^{-1}(a,b)$ is a union of two open sets of A which is open. Thus, q is continuous. Define $h(x) = (x, 0)$ for $h : \mathbb{R} \to A$. Then notice $q \circ h (x) = x$ which is the identity of $\mathbb{R}$ and so by problem 2a, q is a quotient map. Now we show q is not open. Notice $[0, 1) \times (0, 1) = A \cap (-1, 1) \times (0, 1)$ is an open set of A where $(-1, 1) \times (0, 1)$ open in $\mathbb{R} \times \mathbb{R}$. But $q([0, 1) \times (0, 1)) = [0, 1)$ which is not open in $\mathbb{R}$ and so q is not open. Finally, we show q is not closed. Define $U = (-\infty, -1) \cup [1, \infty) \times \{0\}$ and see that $A - U = [0, 1) \times \mathbb{R} - \{0\} = A \cap (-\infty, 1) \times (-\infty, 0) \cup (0, \infty)$ which is open because $(-\infty, 1), (-\infty, 0) \cup (0, \infty)$ both open in $\mathbb{R}$. Then $q(U) = (-\infty, -1) \cup [1, \infty)$ and $\mathbb{R} - q(U) = [-1, 1)$ which is not open in $\mathbb{R}$. Therefore, $q(U)$ is not closed in $\mathbb{R}$. Thus, q is not a closed map. We have shown q is a quotient map that is neither open nor closed. $\blacksquare$
-
-**Problem 4:**
-a)
-Define an equivalence relation on the plane $X = \mathbb{R}^2$ as follows:
-$$
-x_0 \times y_0 R x_1 \times y_1 \text{ if } x_0 + y_0^2 = x_1 + y_1^2
-$$
-Let X* be the corresponding quotient space. It is homeomorphic to a familiar space; what is it?
-b)
-Repeat (a) for the equivalence relation
-$$
-x_0 \times y_0 R x_1 \times y_1 \text{ if } x_0^2 + y_0^2 = x_1^2 + y_1^2
-$$
-**Solution:**
-a)
-Define the map $g : X \to \mathbb{R}$ where $g(x \times y) = x + y^2$. It suffices to show g is a quotient map, so by corollary 22.3 we see that $X*$ is homeomorphic to $\mathbb{R}$. Consider arbitrary $c \in \mathbb{R}$. Notice $g(c \times 0) = c + 0^2 = c$ and since c was arbitrary, g is surjective. g is a polynomial and so is continuous, and implies the topological definition of continuity as shown earlier in the book. Define $h : \mathbb{R} \to X$ by $h(x) = (x, 0)$. Notice $g \circ h (x) = x$ which is just the identity map of $\mathbb{R}$ and so g is a quotient map by problem 2a. Lastly, we verify the construction of X* as a collection of $\{g^{-1}(\{z\}) : z \in \mathbb{R}\}$. Consider arbitrary $z \in X*$. By construction of X*, $z = \{(x, y) : x + y^2 = c\}$ for some fixed c. But $\{(x, y) : x + y^2 = c\} = \{g^{-1}(\{c\}): c \in \mathbb{R}\}$ and since z was arbitrary, any element of $X*$ is defined by the construction of corollary 22.3.
-$\blacksquare$
-
-b)
-Define the map $g : X \to [0, \infty)$ where $g(x \times y) = x^2 + y^2$. It suffices to show g is a quotient map, so by corollary 22.3 we see that $X*$ is homeomorphic to $[0, \infty)$. Consider arbitrary $c \in [0, \infty)$. Notice $g(\sqrt{c} \times 0) = c + 0^2 = c$ and since c was arbitrary, g is surjective. g is a polynomial and so is continuous, and implies the topological definition of continuity as shown earlier in the book. Define $h : [0, \infty) \to X$ by $h(x) = (\sqrt{x}, 0)$. Notice $g \circ h (x) = x$ which is just the identity map of $[0, \infty)$ and so g is a quotient map by problem 2a. Lastly, we verify the construction of X* as a collection of $\{g^{-1}(\{z\}) : z \in [0, \infty)\}$. Consider arbitrary $z \in X*$. By construction of X*, $z = \{(x, y) : x^2 + y^2 = c\}$ for some fixed c. But $\{(x, y) : x^2 + y^2 = c\} = \{g^{-1}(\{c\}): c \in [0, \infty)\}$ and since z was arbitrary, any element of $X*$ is defined by the construction of corollary 22.3.
-$\blacksquare$
-
-Problem 2 (Supp):
-A topological group $G$ is a group that is also a topological space satisfying the $T_1$ axiom, such that the map of $G \times G$ into $G$ sending $x \times y$ into $x \cdot y$, and the map of $G$ into $G$ sending $x$ into $x^{-1}$, are continuous maps. Throughout the following exercises, let $G$ denote a topological group.
-Show that the following are topological groups:
-a) $(\mathbb{Z}, +)$
-b) $(\mathbb{R}, +)$
-c) $(\mathbb{R}_{+}, \cdot)$
-d) $(S^1, \cdot)$, where $S^1$ is the space of all complex numbers $z$ for which $|z| = 1$.
-e) $GL(n)$ under matrix multiplication. ($GL(n)$ is the set of all nonsingular $n \times n$ matrices, topologized by considering it as a subset of euclidean space of dimension $n^2$ in the obvious way).
-Solution:
-a)
-We use the order topology. By Theorem 17.11, every simply ordered set is a Hausdorff space in the order topology and so the order topology on $\mathbb{Z}$ satisfies the $T_1$ axiom. Notice the order topology on $\mathbb{Z}$ coincides with its discrete topology as we can get any single point $n \in \mathbb{Z}$ by the basis element $(n - 1, n + 1)$ and unions of these single points create any subset of $\mathbb{Z}$. It follows that $h : \mathbb{Z} \to \mathbb{Z}$ defined by $h(x) = -x$ is trivially continuous because $h^{-1}(V)$ for any set $V$ of $\mathbb{Z}$ is open by the definition of the discrete topology and the definition of $h$. Define $g : \mathbb{Z} \times \mathbb{Z} \to \mathbb{Z}$ by $g(x, y) = x + y$. Once again, this is trivially continuous because $g^{-1}(V)$ for any set $V$ of $\mathbb{Z}$ is open by the definition of the discrete topology, product topology, and the definition of $g$. Therefore, $(\mathbb{Z}, +)$ is a topological group. $\blacksquare$
-
-**b)**
-We use the standard topology on $\mathbb{R}$. Since $\mathbb{R}$ is a metric space (and a simply ordered space), it is Hausdorff, which implies it satisfies the $T_1$ axiom. Define the inversion map $h : \mathbb{R} \to \mathbb{R}$ by $h(x) = -x$. This is a simple linear polynomial, and polynomials are everywhere continuous. Define the group operation map $g : \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ by $g(x, y) = x + y$. This is a polynomial in two variables, which implies the topological definition of continuity as shown earlier in the book. Therefore, $(\mathbb{R}, +)$ is a topological group. $\blacksquare$
-
-c)
-We use the subspace topology inherited from $\mathbb{R}$. Since $\mathbb{R}$ is Hausdorff, any subspace of a Hausdorff space is also Hausdorff, so $\mathbb{R}_+$ satisfies the $T_1$ axiom. Define the inversion map $h : \mathbb{R}_+ \to \mathbb{R}_+$ by $h(x) = 1/x$. Since $0 \notin \mathbb{R}_+$, this rational function is continuous on its entire domain. Define the group operation map $g : \mathbb{R}_+ \times \mathbb{R}_+ \to \mathbb{R}_+$ by $g(x, y) = x \cdot y$. Since this is simply a polynomial in two variables restricted to the domain $\mathbb{R}_+ \times \mathbb{R}_+$, it is continuous. Therefore, $(\mathbb{R}_+, \cdot)$ is a topological group. $\blacksquare$
-
-**d)**
-Let $S^1$ have the subspace topology inherited from the complex plane $\mathbb{C}$ (which is homeomorphic to $\mathbb{R}^2$). Since $\mathbb{C}$ is a metric space and thus Hausdorff, the subspace $S^1$ is also Hausdorff, satisfying the $T_1$ axiom. Define the inversion map $h : S^1 \to S^1$ by $h(z) = z^{-1}$. Since elements in $S^1$ have a magnitude of 1 ($|z| = 1$), it follows that $z^{-1} = \bar{z}$ (the complex conjugate). Complex conjugation is simply a reflection across the real axis, which is an isometry and therefore continuous. Define the group operation map $g : S^1 \times S^1 \to S^1$ by $g(z_1, z_2) = z_1 \cdot z_2$. Complex multiplication is defined by polynomials combining the real and imaginary components, so it is continuous. Therefore, $(S^1, \cdot)$ is a topological group. $\blacksquare$
-
-**e)**
-We consider $GL(n)$ as a subspace of the Euclidean space $\mathbb{R}^{n^2}$. As a subspace of a metric space, $GL(n)$ is Hausdorff and therefore satisfies the $T_1$ axiom. Define the group operation $g : GL(n) \times GL(n) \to GL(n)$ by $g(A, B) = A \cdot B$. By the definition of matrix multiplication, each entry of the product matrix $A \cdot B$ is a finite sum of products of the entries of $A$ and $B$ (which forms a polynomial). Since polynomials are continuous, $g$ is continuous. Define the inversion map $h : GL(n) \to GL(n)$ by $h(A) = A^{-1}$. By Cramer's Rule, the entries of the inverse matrix $A^{-1}$ are rational functions of the entries of $A$, where the denominator is always $\det(A)$. By the definition of $GL(n)$, $\det(A) \neq 0$, so the denominator is never zero on this subspace. Because rational functions with non-zero denominators are continuous, $h$ is continuous. Therefore, $GL(n)$ is a topological group. $\blacksquare$
 
 ### References
 - *Book Title* — Chapter X, Pages Y–146
