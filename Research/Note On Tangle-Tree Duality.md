@@ -62,6 +62,8 @@ This section introduces two special kinds of oriented separations: small separat
 
 **Example 2.3.2 (Small separations of a set).** For separations of a set $V$, the small separations are precisely those of the form $(A,V)$.
 
+**Proof.** Consider some separation $(A, B)$ of $V$. By definition, $A \cup B = V$. Since $(A, B)$ is small, we must have $(A, B) \le (B, A)$ which indicates that $A \subseteq B$. Hence $A \cup B = B$, giving $B = V$. Thus, we see that all small separations of $V$ must be of the form $(A, V)$ for some set $A \subseteq V$. $\proofend$
+
 **Proposition 2.3.3 (Small separations are closed downward).** If $\overrightarrow{s}$ is small, then every $\overrightarrow{r} \le \overrightarrow{s}$ is small.
 
 **Proof.** Suppose $\overrightarrow{r} \le \overrightarrow{s}$. Since $*$ is order-reversing, $\overleftarrow{s} \le \overleftarrow{r}$. Since $\overrightarrow{s}$ is small, $\overrightarrow{s} \le \overleftarrow{s}$. Therefore $\overrightarrow{r} \le \overrightarrow{s} \le \overleftarrow{s} \le \overleftarrow{r}$. Hence $\overrightarrow{r} \le \overleftarrow{r}$, so $\overrightarrow{r}$ is small. $\blacksquare$
