@@ -188,7 +188,7 @@ Any proper initial segment of a wff contains an excess of left parentheses. Thus
 ### Key Concepts
 - **Induction**:
   - Let U be some set of elements, $B \subseteq U$, and $F = \{f : U \times U \to U, g : U \to U\}$ ($F$ not need be finite).
-  - Top Down: $C^* = \bigcap \{P \subseteq U | \text{P is inductive}\}$. $C^*$ is then inductive and the smallest such set (trivial to check).
+  - Top Down: $C^* = \bigcap \{P \subseteq U | \text{P is inductive}\}$. $C^*$ is then inductive and the smallest such set included in all other inductive sets.
   - Bottom Up: Define a construction sequence to be $<x_1, ..., x_n>$ such that for each $i \le n$ we have $x_i \in U$ and at least one of $x_i \in B$, $x_i = f(x_j, x_k)$, $x_i = g(x_j)$ where $j, k < i$. Let $C_n = \{x | \text{some construction sequence of length n ends with x} \}$. Then $C_1 \subseteq C_2 \subseteq ...$ and $C_* = \bigcup_n C_n$.
   - $C^* = C_*$, so we refer to the set as C and is said to be generated from B by the functions in F.
 

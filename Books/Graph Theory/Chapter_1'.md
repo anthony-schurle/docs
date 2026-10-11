@@ -322,6 +322,10 @@ A connected graph is Eulerian iff every vertex has even degree.
 
 ### Definitions
 
+- **Vertex Space**: $\mathcal{V}(G)$ for graph $G$ is the vector space over $\mathbb{F}_2 = \{0, 1\}$ of all functions $V \to \mathbb{F_2}$. Naturally each $v \in \mathcal{V}(G)$ corresponds to a subset of $V$. For $U \subseteq V$ we have $U = -U$ and $U + U'$ is the symmetric difference of both. Standard basis is the functions with one element set to $1$.
+- **Edge Space**: $\epsilon(G)$ for graph $G$ is the vector space over $\mathbb{F}_2$ of all functions $E \to \mathbb{F}_2$. Similar natural properties as the vertex space. $(F, F') := \sum_{e \in E}F(e)F'(e) \in \mathbb{F}_2$. $\mathcal{F}^\perp := \{D \in \epsilon(G) | \forall F \in \mathcal{F}((F, D) = 0)\}$ for $\mathcal{F} \subseteq \epsilon(G)$.
+- **Cycle Space**: $\mathcal{C}(G) \subseteq \epsilon(G)$ spanned by all the cycles in $G$.
+- **Cyclomatic Number**: $dim(\mathcal{C}(G))$.
 - **Cut**: Set $F$ of edges is a cut if there exists partition $\{V_1, V_2\}$ of the vertices such that $F = E(V_1, V_2)$.
 - **Bond**: Minimal non-empty cut.
 - **Atomic**: Cuts or bonds of the form $E(v)$ where $v$ is a single vertex.
@@ -361,21 +365,11 @@ def example_function(input_data):
 
 ### Results & Proofs
 
-**Proposition: Example Proposition**
-State a preliminary result or narrowly scoped mathematical claim.
-> **Proof**: Provide a proof using relevant definitions, axioms, previously established results, or direct reasoning.
-
-**Lemma: Example Lemma**
-State an intermediate result that supports a later theorem or proposition.
-> **Proof**: Provide the logical steps required to establish the lemma.
-
-**Theorem: Example Theorem**
-State the principal theorem or major result of the section.
-> **Proof**: Provide the complete argument, including assumptions, intermediate steps, and the conclusion.
-
-**Corollary: Example Corollary**
-State a result that follows directly from the preceding theorem.
-> **Proof**: Explain how the corollary follows from the theorem, noting any additional assumptions or substitutions.
+**Proposition: Proposition 1.9.1**
+The following assertions are equivalent for edge sets $D \subseteq E$:
+(i) $D \in \mathcal{C}(G)$;
+(ii) $D$ is a disjoint union of edge sets of cycles in $G$;
+(iii) All vertex degrees of the graph $(V, D)$ are even.
 
 ### Formulas
 

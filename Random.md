@@ -1,0 +1,8 @@
+1. a, b, c, e, f
+2. C
+3. D, assume drawing is correct
+4. $N_h \ge 2^{0.5h}$ since $h \ge 2$ and so $N_h \ge 2^{2.5} = \sqrt{32} = 4\sqrt{2}$. Not an answer choice but hand drawing by fibonacci gives B.
+5. IF they do not have equal node count, return as then one must be missing a key. Else get key sets with in-order traversal on both. Then run over one of the sequences and compare the ith index element to the other sequence. If at any point they keys are not equal, return. In-order takes n time and so does running over the sequence. Hence we have $O(cn) = O(n)$ for some constant c. (On an actual quiz ill be a little more rigoruous.)
+6. If x is NIL, return 0. Else set h_1 = recurisve call on left child and h_2 = recursive call on right child. If either is -1 or they are unbalanced, return -1. If they are balanced, return 1 + max(h_1, h_2). This algorithm returns $x \ge 0$ if the tree is balanced, else $-1$. The algorithm itself runs in constant time but there are $n + c$ recursive calls where $c$ is  corresponding to the calls to $NIL$. Clearly $c \le n$ and so $O(2n) = O(n)$.
+7. We induct, clearly this is true when $h = 2$. Now suppose it is true for AVL of height $h$. Then the minimal AVL formed from $AVL_h$ and $AVL_{h-1}$ is an AVL of $AVIL_{h+1}$ in addition, each leaf now has at least depth $\frac{h}{2} + 1 = \frac{h+2}{2}$ or $\frac{h-1}{2} + 1 = \frac{h+1}{2}$. Hence the property holds for $h+1$.
+8. Glue the AVLS together with a root node, then perform rotations on the root which may be unbalanced if one tree is taller than the other. Total rotations needed on the root is the difference in height.
